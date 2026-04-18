@@ -1,13 +1,13 @@
+// \MakeMyArtist\app\index.tsx
+
 import { router } from 'expo-router';
 import { useEffect } from 'react';
 
 export default function Index() {
   useEffect(() => {
     const timeout = setTimeout(() => {
-      const isLoggedIn = false;
-
-      router.replace(isLoggedIn ? '/(tabs)' : '/screens/login');
-    }, 0); // important
+      router.replace('/screens/SplashScreen'); // 👈 go to splash first
+    }, 0);
 
     return () => clearTimeout(timeout);
   }, []);
