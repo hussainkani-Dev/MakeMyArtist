@@ -1,110 +1,122 @@
-import { Ionicons } from '@expo/vector-icons';
-import React, { useState } from 'react';
+import { Ionicons } from "@expo/vector-icons";
+import React, { useState } from "react";
 import {
   Text,
   TextInput,
   TouchableOpacity,
   View,
+  Image,
   StatusBar,
-} from 'react-native';
+  ScrollView,
+} from "react-native";
 
-import useAuthViewModel from '../../src/viewmodel/auth/useAuthViewModel';
+import useAuthViewModel from "../../src/viewmodel/auth/useAuthViewModel";
 
 export default function Login() {
   const { login, loading, error } = useAuthViewModel();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <View className="flex-1 bg-orange-100 justify-center px-6">
-       {/* CONTENT */}
-      <View className="flex justify-center my-6 items-center px-6">
-        <Text className="text-2xl font-bold text-center">
-          Welcome to Make My Artist
-        </Text>
-      </View>
-      <StatusBar barStyle="dark-content" />
+    <View className="flex-1 bg-[#f3e7df]">
+      <StatusBar barStyle="light-content" />
 
-      
-
-      {/* Card Container */}
-      <View className="bg-orange-200 rounded-3xl p-6 shadow-lg">
-
-        {/* Title */}
-        <Text className="text-2xl font-semibold text-center text-gray-800 mb-2">
-          Log in
-        </Text>
-
-        <Text className="text-center text-gray-600 mb-6">
-          Enter your login details to access your account
-        </Text>
-
-        {/* Email Input */}
-        <TextInput
-          placeholder="Email or Username"
-          value={email}
-          onChangeText={setEmail}
-          placeholderTextColor="#888"
-          className="bg-white rounded-xl px-4 py-3 mb-4"
+      {/* TOP IMAGE - full width, no padding */}
+      <View className="h-[50%] w-full">
+        <Image
+          source={require("../../assets/images/login_bg.png")}
+          style={{ width: "100%", height: "100%" }}
+          resizeMode="cover"
         />
 
-        {/* Password Input */}
-        <View className="bg-white rounded-xl flex-row items-center px-4 mb-2">
+        {/* Overlay Text */}
+        <View className="absolute w-full bottom-32 left-0">
+          <Text className="text-white text-center text-4xl font-bold">
+            Let&apos;s get you Login!
+          </Text>
+          <Text className="text-white text-center text-lg mt-2 ">
+            Enter your information below.
+          </Text>
+        </View>
+      </View>
+
+      {/* CARD - full width, only top corners rounded */}
+      <View className="flex-1 relative -top-10 bg-white w-[95%] mx-auto rounded-[30px] px-6 py-6 ">
+        {/* Google Button */}
+        <TouchableOpacity className="border border-gray-300 rounded-xl py-3 mb-4 items-center flex-row justify-center">
+          <Text style={{ fontSize: 18, fontWeight: "bold", color: "#4285F4" }}>
+            G
+          </Text>
+          <Text className="ml-2 text-gray-700">Google</Text>
+        </TouchableOpacity>
+
+        {/* Divider */}
+        <View className="flex-row items-center mb-4">
+          <View className="flex-1 h-[1px] bg-gray-300" />
+          <Text className="mx-2 text-gray-500 text-sm">Or login with</Text>
+          <View className="flex-1 h-[1px] bg-gray-300" />
+        </View>
+
+        {/* Email */}
+        <Text className="text-gray-500 text-sm mb-1">Email Address</Text>
+        <TextInput
+          placeholder="Enter email"
+          value={email}
+          onChangeText={setEmail}
+          keyboardType="email-address"
+          autoCapitalize="none"
+          className="border border-gray-300 rounded-xl px-4 py-3 mb-4"
+        />
+
+        {/* Password */}
+        <Text className="text-gray-500 text-sm mb-1">Password</Text>
+        <View className="border border-gray-300 rounded-xl flex-row items-center px-4">
           <TextInput
-            placeholder="Password"
+            placeholder="Enter password"
             secureTextEntry={!showPassword}
             value={password}
             onChangeText={setPassword}
-            placeholderTextColor="#888"
             className="flex-1 py-3"
           />
-
           <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
             <Ionicons
-              name={showPassword ? 'eye' : 'eye-off'}
+              name={showPassword ? "eye" : "eye-off"}
               size={20}
-              color="#ff7a00"
+              color="gray"
             />
           </TouchableOpacity>
         </View>
 
-        {/* Forgot Password */}
-        <TouchableOpacity>
-          <Text className="text-orange-600 text-sm mb-6">
-            Forgot password?
-          </Text>
+        {/* Forgot */}
+        <TouchableOpacity className="mt-2 mb-6 self-end">
+          <Text className="text-gray-500 text-sm">Forgot Password?</Text>
         </TouchableOpacity>
 
         {/* Error */}
         {error && (
-          <Text className="text-red-500 mb-2 text-center">{error}</Text>
+          <Text className="text-red-500 text-center mb-2">{error}</Text>
         )}
 
         {/* Login Button */}
         <TouchableOpacity
           onPress={() => login(email, password)}
           disabled={loading}
-          className="bg-orange-500 py-4 rounded-xl items-center"
+          className="bg-orange-600 py-4 rounded-full items-center"
         >
           <Text className="text-white font-semibold text-lg">
-            {loading ? 'Loading...' : 'Log In'}
+            {loading ? "Loading..." : "Login"}
           </Text>
         </TouchableOpacity>
 
-        {/* Bottom Text */}
-        <View className="mt-8 items-center">
-          <Text className="text-gray-700">
-            Don’t have an account?
-          </Text>
+        {/* Bottom */}
+        <View className="mt-6 flex-row justify-center">
+          <Text className="text-gray-500">Don&apos;t have an account? </Text>
           <TouchableOpacity>
-            <Text className="text-orange-700 font-semibold mt-1">
-              Sign up
-            </Text>
+            <Text className="text-[#c0392b] font-semibold">Register Now</Text>
           </TouchableOpacity>
         </View>
-
       </View>
     </View>
   );

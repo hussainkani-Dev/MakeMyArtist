@@ -1,71 +1,101 @@
 import { Image, StyleSheet, Text, View } from 'react-native';
-import RatingStars from '../ratingStars';
+import { Ionicons } from '@expo/vector-icons';
+
 type Props = {
   item: {
     title: string;
     rating?: number;
   };
-  onPress: (item: any) => void;
 };
 
-export default function FeatrdSalonCardItem({item, onPress}: Props) {
-  const rating = item?.rating || 5; // dynamic rating
-
+export default function FeatrdSalonCardItem({ item }: Props) {
   return (
-    <View style={styles.container}>
+    <View style={styles.card}>
       <Image
         source={require('../../../assets/dummyImages/featured-1.jpg')}
-        style={styles.imageContainer}
+        style={styles.image}
       />
-      <View style={styles.bodyContainer}>
-        <Text style={styles.titleTxt}>The S Beauty Salon</Text>
-        <Text style={styles.contentTxt}>Jumerian Lake Towers, Dubai (JLT)</Text>
-        <View style={styles.ratingContainer}>{RatingStars(rating)}</View>
+
+      {/* Rating badge */}
+      <View style={styles.ratingBadge}>
+        <Ionicons name="star" size={12} color="#fff" />
+        <Text style={styles.ratingTxt}>4.8</Text>
+      </View>
+
+      <View style={styles.body}>
+        <Text style={styles.name}>Alaina Tisha</Text>
+        <Text style={styles.role}>Beauty Artist</Text>
+
+        <View style={styles.bottomRow}>
+          <Text style={styles.price}>$39.00/hr</Text>
+          <Text style={styles.time}>04</Text>
+        </View>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#e6dff1',
-    borderRadius: 20,
-    height: 170,
-    width: 200,
-    margin: 10,
-    flex: 1,
-  },
-  imageContainer: {
-    width: '100%',
-    height: '65%',
-    borderWidth: 2,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    borderColor: '#e6dff1',
-  },
-  bodyContainer: {
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 5,
+  card: {
+    width: 160,
+    backgroundColor: '#fff',
+    borderRadius: 16,
+    marginRight: 12,
+    overflow: 'hidden',
   },
 
-  titleTxt: {
-    color: '#959f9e',
-    fontSize: 16,
-    textAlign: 'center',
-    fontWeight: 'bold',
+  image: {
+    width: '100%',
+    height: 110,
   },
-  contentTxt: {
-    color: '#959f9e',
-    fontSize: 10,
-    textAlign: 'center',
-  },
-  ratingContainer: {
+
+  ratingBadge: {
+    position: 'absolute',
+    right: 8,
+    top: 8,
     flexDirection: 'row',
-    justifyContent: 'center',
-    paddingTop: 5,
+    alignItems: 'center',
+    backgroundColor: '#c47a2c',
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 6,
+  },
+
+  ratingTxt: {
+    color: '#fff',
+    fontSize: 10,
+    marginLeft: 3,
+  },
+
+  body: {
+    padding: 10,
+  },
+
+  name: {
+    fontWeight: '600',
+    fontSize: 14,
+    color: '#000',
+  },
+
+  role: {
+    fontSize: 11,
+    color: '#888',
+    marginTop: 2,
+  },
+
+  bottomRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 6,
+  },
+
+  price: {
+    fontWeight: '600',
+    fontSize: 13,
+  },
+
+  time: {
+    fontSize: 11,
+    color: '#999',
   },
 });
