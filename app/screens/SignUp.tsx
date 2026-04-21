@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   StatusBar,
+  Image,
   ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
@@ -19,7 +20,7 @@ export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <SafeAreaView className="flex-1 bg-gray-100">
+    <SafeAreaView className="flex-1 bg-white">
       <StatusBar barStyle="dark-content" />
 
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
@@ -103,7 +104,7 @@ export default function SignUp() {
           </Text>
 
           {/* Button */}
-          <TouchableOpacity className="bg-orange-600 rounded-full py-4 mt-6 items-center">
+          <TouchableOpacity className="bg-orange-600 rounded-full py-4 mt-6 items-center" onPress={() => router.push("/screens/EmailVerification")}>
             <Text className="text-white font-semibold text-base">
               Join Now
             </Text>
@@ -118,8 +119,11 @@ export default function SignUp() {
 
           {/* Google Button */}
           <TouchableOpacity className="border border-orange-500 rounded-full py-4 flex-row items-center justify-center">
-            <Ionicons name="logo-google" size={18} color="#DB4437" />
-            <Text className="ml-2 text-gray-700 font-medium" onPress={() => router.push("/screens/locationSearchView")}>
+             <Image
+                          source={require("../../assets/images/icons8-google-100.png")}
+                          style={{ width: 20, height: 20 }}
+                        />
+            <Text className="ml-2 text-gray-700 font-medium" >
               Join with Google
             </Text>
           </TouchableOpacity>

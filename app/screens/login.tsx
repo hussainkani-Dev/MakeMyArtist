@@ -9,7 +9,8 @@ import {
   StatusBar,
 } from "react-native";
 import { router } from "expo-router";
-
+import { ActivityIndicator } from "react-native";
+import Svg, { Path } from "react-native-svg";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import useAuthViewModel from "../../src/viewmodel/auth/useAuthViewModel";
 
@@ -39,7 +40,7 @@ export default function Login() {
             resizeMode="cover"
           />
 
-            {/* <View className="absolute w-full bottom-32 left-0">
+          {/* <View className="absolute w-full bottom-32 left-0">
               <Text className="text-white text-center text-4xl font-bold">
                 Let&apos;s get you Login!
               </Text>
@@ -50,19 +51,22 @@ export default function Login() {
         </View>
 
         {/* CARD */}
-       <View className="flex-1 relative -top-10 bg-white w-[95%] mx-auto rounded-[30px] px-6 py-6 min-h-full">
+        <View className="flex-1 relative -top-10 bg-white w-[95%] mx-auto rounded-[30px] px-6 pt-10 py-6 shadow-black min-h-full">
           {/* Google */}
           <TouchableOpacity className="border border-gray-300 rounded-xl py-3 mb-4 items-center flex-row justify-center">
-            <Text style={{ fontSize: 18, fontWeight: "bold", color: "#4285F4" }}>
-              G
-            </Text>
-            <Text className="ml-2 text-gray-700">Sign In with Google</Text>
+            <Image
+              source={require("../../assets/images/icons8-google-100.png")}
+              style={{ width: 20, height: 20 }}
+            />
+            <Text className="ml-2 text-gray-700 flex-shrink">
+              Sign In with Google h
+            </Text>{" "}
           </TouchableOpacity>
 
           {/* Divider */}
           <View className="flex-row items-center mb-4">
             <View className="flex-1 h-[1px] bg-gray-300" />
-            <Text className="mx-2 text-gray-500 text-sm">Or login with</Text>
+            <Text className="mx-2 text-gray-500 text-sm">Or login with h</Text>
             <View className="flex-1 h-[1px] bg-gray-300" />
           </View>
 
@@ -98,7 +102,9 @@ export default function Login() {
 
           {/* Forgot */}
           <TouchableOpacity className="mt-2 mb-6 self-end">
-            <Text className="text-gray-500 text-sm">Forgot Password?</Text>
+            <Text className="text-gray-500 text-sm flex-shrink">
+              Forgot Password? h
+            </Text>
           </TouchableOpacity>
 
           {/* Error */}
@@ -112,18 +118,21 @@ export default function Login() {
             disabled={loading}
             className="bg-orange-600 py-4 rounded-full items-center"
           >
-            <Text className="text-white font-semibold text-lg">
-              {loading ? "Loading..." : "Login"}
-            </Text>
+            {loading ? (
+              <ActivityIndicator size="small" color="#fff" />
+            ) : (
+              <Text className="text-white font-semibold text-lg">Login</Text>
+            )}
           </TouchableOpacity>
 
           {/* Bottom */}
           <View className="mt-6 flex-row justify-center">
-            <Text className="text-gray-500">
-              Don&apos;t have an account?
-            </Text>
+            <Text className="text-gray-500">Don&apos;t have an account?</Text>
             <TouchableOpacity>
-              <Text className="text-orange-400 font-semibold ml-1" onPress={() => router.push("/screens/SignUp")}>
+              <Text
+                className="text-orange-400 font-semibold ml-1"
+                onPress={() => router.push("/screens/SignUp")}
+              >
                 Register Now
               </Text>
             </TouchableOpacity>

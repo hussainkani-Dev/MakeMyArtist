@@ -23,25 +23,25 @@ const DATA: Item[] = [
     id: "1",
     title: "Best Stylist For You",
     subtitle: "Styling your appearance according to your lifestyle",
-    image: require("../../assets/images/onboard_bg_!.png"),
+    image: require("../../assets/images/onboard_bg_1_1_11zon.jpg"),
   },
   {
     id: "2",
     title: "Meet Our Specialists",
     subtitle: "There are many best stylists from all the best salons ever",
-    image: require("../../assets/images/onboard_bg_2.png"),
+    image: require("../../assets/images/onboard_bg_2_2_11zon.jpg"),
   },
   {
     id: "3",
     title: "Find The Best Service",
     subtitle: "There are various services from the best salons",
-    image: require("../../assets/images/onboard_bg_3.png"),
+    image: require("../../assets/images/onboard_bg_3_3_11zon.jpg"),
   },
   {
     id: "4",
     title: "Let's Join with Us",
     subtitle: "Find and book Beauty, Salon, Barber and Spa services",
-    image: require("../../assets/images/onboard_bg_4.png"),
+    image: require("../../assets/images/onboard_bg_4_4_11zon.jpg"),
   },
 ];
 
@@ -104,8 +104,11 @@ export default function Onboarding() {
                     </Text>
                   </TouchableOpacity>
 
-                  <TouchableOpacity className="bg-orange-500 py-4 rounded-full items-center">
-                    <Text className="text-white font-semibold"  onPress={() => router.push("/screens/SignUp")}>
+                  <TouchableOpacity
+                    className="bg-orange-500 py-4 rounded-full items-center"
+                    onPress={() => router.push("/screens/SignUp")}
+                  >
+                    <Text className="text-white font-semibold">
                       Join with Email
                     </Text>
                   </TouchableOpacity>
@@ -129,21 +132,21 @@ export default function Onboarding() {
     );
   };
 
- return (
-  <View style={{ flex: 1 }}>
-    <FlatList
-      ref={flatListRef}
-      data={DATA}
-      horizontal
-      pagingEnabled
-      showsHorizontalScrollIndicator={false}
-      keyExtractor={(item) => item.id}
-      renderItem={renderItem}
-      onMomentumScrollEnd={(e) => {
-        const index = Math.round(e.nativeEvent.contentOffset.x / width);
-        setCurrentIndex(index);
-      }}
-    />
-  </View>
-);
+  return (
+    <View style={{ flex: 1 }}>
+      <FlatList
+        ref={flatListRef}
+        data={DATA}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item.id}
+        renderItem={renderItem}
+        onMomentumScrollEnd={(e) => {
+          const index = Math.round(e.nativeEvent.contentOffset.x / width);
+          setCurrentIndex(index);
+        }}
+      />
+    </View>
+  );
 }

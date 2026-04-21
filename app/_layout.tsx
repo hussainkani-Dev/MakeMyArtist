@@ -15,7 +15,7 @@ export const unstable_settings = {
 };
 
 export default function RootLayout() {
-  const pathname = usePathname();   // ✅ track route
+  const pathname = usePathname(); // ✅ track route
   const [loading, setLoading] = useState(false); // ✅ state added
 
   useEffect(() => {
@@ -37,13 +37,14 @@ export default function RootLayout() {
       <>
         <Stack screenOptions={{ headerShown: false }}>
           <Stack.Screen name="screens/SplashScreen" />
+          <Stack.Screen name="screens/EmailVerification.tsx" />
+
           <Stack.Screen name="screens/login" />
+          <Stack.Screen name="screens/SignUp.tsx" />
           <Stack.Screen name="(tabs)" />
           <Stack.Screen name="screens/locationSearchView" />
         </Stack>
-
         {loading && <Loader />} {/* ✅ now works */}
-
         <StatusBar style="auto" />
       </>
     </ThemeProvider>
