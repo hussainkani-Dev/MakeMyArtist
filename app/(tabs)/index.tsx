@@ -4,6 +4,9 @@ import FeatrdSalonCardItem from "@/src/components/ui/featrdSalonCardItem";
 import ListTitleCardItem from "@/src/components/ui/listTitleCardItem";
 import NrBySalonCardItem from "@/src/components/ui/nrBySalonCardItem";
 import TopServiceCardItem from "@/src/components/ui/topServiceCardItem";
+import WhatYouWant from "@/src/components/ui/WhatYouWant";
+import UpcomingAppointmentCard from "@/src/components/ui/UpcomingAppointmentCard";
+import MostSearchInterest from "@/src/components/ui/MostSearchInterest";
 import { Ionicons } from "@expo/vector-icons";
 import { router } from "expo-router";
 import {
@@ -30,9 +33,32 @@ const dataTopSveList = [
   },
 ];
 const banners = [
-  { id: "1", image: require("../../assets/images/c_1.png") },
-  { id: "2", image: require("../../assets/images/c_2.png") },
-  { id: "3", image: require("../../assets/images/c_3.png") },
+  { id: "1", image: require("../../assets/images/coup_1.png") },
+  { id: "2", image: require("../../assets/images/coup_2.png") },
+  { id: "3", image: require("../../assets/images/coup_3.png") },
+];
+
+const salons = [
+  {
+    id: 1,
+    title: "Euphoria Spa & Beauty Lounge",
+    image: require("../../assets/images/images.jpg"),
+  },
+  {
+    id: 2,
+    title: "Lumina Beauty Sanctuary",
+    image: require("../../assets/images/onboard_bg_1_1_11zon.jpg"),
+  },
+  {
+    id: 3,
+    title: "Royal Beauty Center",
+    image: require("../../assets/images/onboard_bg_2_2_11zon.jpg"),
+  },
+  {
+    id: 4,
+    title: "Glow Spa Lounge",
+    image: require("../../assets/images/onboard_bg_3_3_11zon.jpg"),
+  },
 ];
 
 export default function Home() {
@@ -65,7 +91,6 @@ export default function Home() {
                   </Text>
 
                   {/* Location */}
-                
                 </View>
 
                 {/* Right Profile */}
@@ -74,10 +99,12 @@ export default function Home() {
                   onPress={handleLocRedirect}
                   className="flex-row items-center "
                 >
-                  <Ionicons name="location-sharp" size={25} className="text-orange-500" />
-                  <Text className="text-lg text-gray-500 ml-1">
-                    Dubai, UAE
-                  </Text>
+                  <Ionicons
+                    name="location-sharp"
+                    size={25}
+                    className="text-orange-500"
+                  />
+                  <Text className="text-lg text-gray-500 ml-1">Dubai, UAE</Text>
                 </TouchableOpacity>
               </View>
 
@@ -100,6 +127,17 @@ export default function Home() {
             <View className="bg-white">
               <AutoBannerList bannerList={banners} />
             </View>
+
+            <View className="bg-white">
+              <WhatYouWant />
+            </View>
+            <View className="bg-white">
+              <ListTitleCardItem
+                item={{ title: "Upcoming Appointment Card" }}
+                onPress={(item) => console.log("Pressed:")}
+              />
+              <UpcomingAppointmentCard />
+            </View>
             <View className="bg-white">
               <ListTitleCardItem
                 item={{ title: "Exclusive Deals" }}
@@ -107,6 +145,7 @@ export default function Home() {
               />
               <FlatList
                 data={dataTopSveList}
+                className="mx-3"
                 horizontal={true}
                 keyExtractor={(item) => item.id}
                 renderItem={({ item }) => (
@@ -125,14 +164,22 @@ export default function Home() {
               />
 
               <FlatList
-                data={dataTopSveList}
-                horizontal={true}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => <TopServiceCardItem />}
+                data={salons}
+                numColumns={2}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => <TopServiceCardItem item={item} />}
+                columnWrapperStyle={{
+                  justifyContent: "space-between",
+                  paddingHorizontal: 16,
+                }}
+                contentContainerStyle={{
+                  paddingBottom: 20,
+                  paddingTop: 10,
+                }}
                 showsVerticalScrollIndicator={false}
               />
             </View>
-            <View className="bg-white">
+            <View className="bg-white mx-3">
               <ListTitleCardItem
                 item={{ title: "Featured Salons" }}
                 onPress={(item) => console.log("Pressed:")}
@@ -147,10 +194,17 @@ export default function Home() {
                     onPress={(item) => console.log("Pressed:", item)}
                   />
                 )}
-                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
               />
             </View>
             <View className="bg-white">
+              <ListTitleCardItem
+                item={{ title: "Most Search Interest" }}
+                onPress={(item) => console.log("Pressed:")}
+              />
+              <MostSearchInterest />
+            </View>
+            <View className="bg-white mb-14">
               <ListTitleCardItem
                 item={{ title: "Nearby Salons" }}
                 onPress={(item) => console.log("Pressed:")}

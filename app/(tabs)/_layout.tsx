@@ -3,10 +3,10 @@ import { Tabs } from "expo-router";
 import React from "react";
 import { View } from "react-native";
 
-const ACTIVE_COLOR = "#f97316"; // orange-500 (Tailwind exact)
-const INACTIVE_COLOR = "transparent"; // or '#fb923c' for orange-400
+const ACTIVE_COLOR = "#f97316";
+const INACTIVE_COLOR = "transparent";
 
-const TabIcon = ({ name, focused }) => {
+const TabIcon = ({ name, focused }: any) => {
   return (
     <View
       style={{
@@ -48,10 +48,9 @@ export default function TabLayout() {
           shadowRadius: 8,
         },
         tabBarShowLabel: false,
-        tabBarActiveTintColor: "#ffffff",
-        tabBarInactiveTintColor: "#9ca3af",
       }}
     >
+      {/* Home */}
       <Tabs.Screen
         name="index"
         options={{
@@ -60,6 +59,8 @@ export default function TabLayout() {
           ),
         }}
       />
+
+      {/* Booking */}
       <Tabs.Screen
         name="booking"
         options={{
@@ -68,14 +69,28 @@ export default function TabLayout() {
           ),
         }}
       />
+
+      {/* Promotion */}
       <Tabs.Screen
         name="promotion"
         options={{
           tabBarIcon: ({ focused }) => (
-            <TabIcon name="pricetag" focused={focused} />
+            <TabIcon name="construct" focused={focused} />
           ),
         }}
       />
+
+      {/* Chat */}
+      <Tabs.Screen
+        name="ChatScreen"
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <TabIcon name="chatbubble" focused={focused} />
+          ),
+        }}
+      />
+
+      {/* Profile */}
       <Tabs.Screen
         name="profile"
         options={{

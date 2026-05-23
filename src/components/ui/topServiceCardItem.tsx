@@ -1,37 +1,48 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 
-export default function TopServiceCardItem() {
+import { Heart } from "lucide-react-native";
+
+type Props = {
+  item: {
+    id: number;
+    title: string;
+    image: any;
+  };
+};
+
+export default function TopServiceCardItem({
+  item,
+}: Props) {
   return (
-    <View style={styles.card}>
-      <Image
-        source={require('../../../assets/dummyImages/featured-1.jpg')}
-        style={styles.icon}
-      />
-      <Text style={styles.text}>Manicures</Text>
-    </View>
+    <TouchableOpacity
+      activeOpacity={0.9}
+      className="w-[48%] mb-3"
+    >
+      {/* Image */}
+      <View className="relative ">
+        <Image
+          source={item.image}
+          resizeMode="cover"
+          className="w-full h-40 rounded-md border-b-2 border-orange-700 rounded-t-3xl"
+        />
+
+        {/* Heart */}
+       
+      </View>
+
+      {/* Title */}
+      <Text
+        numberOfLines={2}
+        className="text-xlg font-semibold text-[#1E1E1E] mt-3 "
+      >
+        {item.title}
+      </Text>
+    </TouchableOpacity>
   );
 }
-
-const styles = StyleSheet.create({
-  card: {
-    width: 80,
-    height: 90,
-    backgroundColor: '#fff',
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 10,
-    elevation: 2,
-  },
-
-  icon: {
-    width: 40,
-    height: 40,
-    marginBottom: 6,
-  },
-
-  text: {
-    fontSize: 11,
-    color: '#333',
-  },
-});

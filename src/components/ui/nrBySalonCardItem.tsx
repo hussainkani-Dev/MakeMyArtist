@@ -1,74 +1,129 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
-import RatingStars from '../ratingStars';
+import React from "react";
+import { View, Text, Image, TouchableOpacity } from "react-native";
+import {
+  Heart,
+  Star,
+  TicketPercent,
+} from "lucide-react-native";
+
 type Props = {
   item: {
-    title: string;
+    title?: string;
     rating?: number;
+    reviews?: string;
+    distance?: string;
+    discount?: string;
+    address?: string;
+    category?: string;
+    image?: any;
   };
   onPress: (item: any) => void;
 };
-export default function NrBySalonCardItem({item, onPress}: Props) {
-  const rating = item?.rating || 5; // dynamic rating
 
+export default function NrBySalonCardItem({
+  item,
+  onPress,
+}: Props) {
   return (
-    <View style={styles.container}>
-      <Image
-        source={require('../../../assets/dummyImages/nearby-1.jpg')}
-        style={styles.imageContainer}
-      />
-      <View style={styles.bodyContainer}>
-        <Text style={styles.titleTxt}>Halon Salon</Text>
-        <Text style={styles.contentTxt}>AI Karama</Text>
+    <TouchableOpacity
+      activeOpacity={0.9}
+      onPress={() => onPress(item)}
+      className="bg-white rounded-3xl mx-4 my-3 overflow-hidden flex-row shadow-lg"
+      style={{
+        elevation: 6,
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 4,
+        },
+        shadowOpacity: 0.15,
+        shadowRadius: 8,
+      }}
+    >
+      {/* LEFT IMAGE SECTION */}
+      <View className="relative">
+        <Image
+          source={
+            item?.image ||
+            require("../../../assets/dummyImages/nearby-1.jpg")
+          }
+          className="w-36 h-36"
+          resizeMode="cover"
+        />
+
+        {/* Favorite Button */}
+        <View className="absolute top-3 left-3 w-8 h-8 rounded-full bg-white items-center justify-center">
+          <Heart
+            size={14}
+            color="#EA580C"
+            fill="#EA580C"
+          />
+        </View>
+
+        {/* Distance Badge */}
+        <View className="absolute bottom-5 left-0 bg-[#FFF5E6] px-3 py-2 rounded-r-full">
+          <Text className="text-orange-500 font-bold text-sm">
+            {item?.distance || "1,1km"}
+          </Text>
+        </View>
       </View>
 
-      <View style={styles.ratingContainer}>{RatingStars(rating)}</View>
-    </View>
+      {/* RIGHT CONTENT */}
+      <View className="flex-1 px-5 py-2 justify-between">
+        <View>
+          {/* Category */}
+          <Text className="text-orange-500 text-base font-medium mb-1">
+            {item?.category || "Hair . Facial"}
+          </Text>
+
+          {/* Title */}
+          <Text className="text-black text-lg font-bold mb-1">
+            {item?.title || "Sophisticated Salon"}
+          </Text>
+
+          {/* Address */}
+          <Text
+            numberOfLines={1}
+            className="text-gray-500 text-base"
+          >
+            {item?.address ||
+              "360 Stillwater Rd. Palm City.."}
+          </Text>
+        </View>
+
+        {/* Bottom Row */}
+        <View className="flex-row items-center justify-between mt-1">
+          {/* Rating */}
+          <View className="flex-row items-center">
+            <Star
+              size={14}
+              color="#F59E0B"
+              
+            />
+
+            <Text className="text-black text-sm font-bold ml-2">
+              {item?.rating || "4.7"}
+            </Text>
+
+            <Text className="text-gray-500 text-sm ml-2">
+              ({item?.reviews || "2.7k"})
+            </Text>
+          </View>
+
+          {/* Discount */}
+          <View className="flex-row items-center">
+            <TicketPercent
+              size={14}
+              color="#0F766E"
+             
+            />
+
+            <Text className="text-gray-700 text-sm ml-2">
+              {item?.discount || "-58%"}
+            </Text>
+          </View>
+        </View>
+      </View>
+    </TouchableOpacity>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: '#f6f6f6',
-    borderWidth: 2,
-    borderRadius: 10,
-    height: 100,
-    margin: 10,
-    flexDirection: 'row',
-    backgroundColor: '#fff',
-  },
-  imageContainer: {
-    width: '30%',
-    height: '100%',
-    borderWidth: 2,
-    borderColor: '#e6dff1',
-    borderBottomLeftRadius: 10,
-    borderTopLeftRadius: 10,
-  },
-  bodyContainer: {
-    padding: 10,
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-  },
-  titleTxt: {
-    color: '#959f9e',
-    fontSize: 16,
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  contentTxt: {
-    color: '#959f9e',
-    fontSize: 10,
-    textAlign: 'center',
-  },
-  ratingContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-    paddingRight: 10,
-    paddingTop: 10,
-    height: '100%',
-  },
-});

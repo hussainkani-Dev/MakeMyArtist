@@ -1,5 +1,9 @@
-import { Ionicons } from '@expo/vector-icons';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Ionicons } from "@expo/vector-icons";
+import {
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
 type Props = {
   item: {
@@ -9,35 +13,35 @@ type Props = {
   onPress: (item: any) => void;
 };
 
-export default function ProfileCardItems({item, onPress}: Props) {
+export default function ProfileCardItems({
+  item,
+  onPress,
+}: Props) {
   return (
-    <TouchableOpacity onPress={() => onPress(item)}>
-      <View style={styles.card}>
-        <View style={styles.cardContent}>
-          <Ionicons name={item.icon} size={20} color={'#e41d89'} />
-          <Text style={styles.title}>{item.title}</Text>
-        </View>
-        <Ionicons name={'chevron-forward-outline'} size={20} color={'#000'} />
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => onPress(item)}
+      className="flex-row items-center justify-between py-5 border-b border-gray-200"
+    >
+      {/* Left Side */}
+      <View className="flex-row items-center">
+        <Ionicons
+          name={item.icon}
+          size={22}
+          color="#000"
+        />
+
+        <Text className="text-[16px] text-black ml-4 font-medium">
+          {item.title}
+        </Text>
       </View>
+
+      {/* Right Arrow */}
+      <Ionicons
+        name="chevron-forward"
+        size={20}
+        color="#A1A1AA"
+      />
     </TouchableOpacity>
   );
 }
-
-const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#fff',
-    marginVertical: 5,
-    marginHorizontal: 5,
-    padding: 16,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  cardContent: {flexDirection: 'row', alignItems: 'center', gap: 12},
-  title: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#000',
-    textAlign: 'left',
-  },
-});

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Text, TouchableOpacity, View } from "react-native";
 
 type Props = {
   item: {
@@ -6,32 +6,25 @@ type Props = {
   };
   onPress: (item: any) => void;
 };
-export default function listTitleCardItem({item, onPress}: Props) {
+
+export default function ListTitleCardItem({
+  item,
+  onPress,
+}: Props) {
   return (
-    <View style={styles.conintainer}>
-      <Text>{item.title}</Text>
-      <TouchableOpacity style={styles.btnStyle} onPress={onPress}>
-        <Text style={styles.btnTxt}>View More</Text>
+    <View className="items-center bg-white mx-4 my-5 flex-row justify-between">
+      <Text className="text-lg font-bold text-black">
+        {item.title}
+      </Text>
+
+      <TouchableOpacity
+        className="  py-2 rounded-xl  justify-center items-center"
+        onPress={() => onPress(item)}
+      >
+        <Text className="text-orange-500 text-center font-medium">
+          View More
+        </Text>
       </TouchableOpacity>
     </View>
   );
 }
-const styles = StyleSheet.create({
-  conintainer: {
-    alignItems: 'center',
-    backgroundColor: '#fff',
-    margin: 20,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  btnStyle: {
-    backgroundColor: '#e41d89',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 10,
-    height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  btnTxt: {color: '#fff', textAlign: 'center'},
-});

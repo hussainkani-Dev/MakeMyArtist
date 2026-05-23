@@ -1,104 +1,102 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import {
+  View,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+} from "react-native";
+import { router } from "expo-router";
+
+import {
+  Heart,
+  Star,
+} from "lucide-react-native";
+
 type Props = {
-  item: {
-    title: string;
+  item?: {
+    title?: string;
+    category?: string;
     rating?: number;
+    reviews?: number;
+    priceRange?: string;
+    image?: any;
   };
-  onPress: (item: any) => void;
 };
 
-export default function ExclsveDealsCardItem({item, onPress}: Props) {
+export default function RecommendationCard({ item }: Props) {
   return (
-    <View style={styles.container}>
-      <Image
-        source={require('../../../assets/dummyImages/featured-1.jpg')}
-        style={styles.imageContainer}
-      />
-      <View style={styles.bodyContainer}>
-        <View style={styles.body1}>
-          <Text style={styles.titleTxt}>The S Beauty Salon</Text>
-          <Text style={styles.contentTxt}>
-            Jumerian Lake Towers, Dubai (JLT)
+    <TouchableOpacity
+      activeOpacity={0.9}
+      className="w-96 h-64 rounded-lg mx-0.5 overflow-hidden bg-white"
+       onPress={() => router.push("/screens/ShopDetailsScreen")}
+    >
+      <ImageBackground
+        source={
+          item?.image ||
+          require("../../../assets/dummyImages/featured-1.jpg")
+        }
+        resizeMode="cover"
+        className="flex-1 justify-between"
+      >
+        {/* Top Section */}
+        <View className="flex-row items-start justify-between px-4 pt-4">
+          {/* Recommendation Badge */}
+          <View className="bg-orange-500 px-4 py-2 rounded-full">
+            <Text className="text-white text-[13px] font-semibold">
+              Recommendation
+            </Text>
+          </View>
+
+          {/* Heart Icon */}
+          <TouchableOpacity className="w-9 h-9 rounded-full bg-black/20 items-center justify-center">
+            <Heart size={22} color="#fff" />
+          </TouchableOpacity>
+        </View>
+
+        {/* Bottom Overlay */}
+        <View className="bg-black/45 px-4 py-4">
+          {/* Title */}
+          <Text className="text-white text-lg font-semibold leading-2">
+            Super S
           </Text>
-          <Text style={styles.contentTxt2}>31% Off</Text>
+          <Text className="text-gray-100 text-sm font-semibold leading-2">
+            Special body massage for relaxation from home
+          </Text>
+
+          {/* Bottom Row */}
+          <View className="flex-row items-center justify-between mt-1">
+            {/* Left */}
+            <View className="flex-row items-center">
+              <Text className="text-white/90 text-xs">
+                Body Care
+              </Text>
+
+              <Text className="text-white/50 mx-2 text-[15px]">
+                •
+              </Text>
+
+              <Star
+                size={10}
+                fill="#FBBF24"
+                color="#FBBF24"
+              />
+
+              <Text className="text-[#FBBF24] text-[15px] ml-1 font-semibold">
+                4.4
+              </Text>
+
+              <Text className="text-white/80 text-sm ml-1">
+                (453)
+              </Text>
+            </View>
+
+            {/* Price */}
+            <Text className="text-white text-xs font-semibold">
+             AED 100 - 200
+            </Text>
+          </View>
         </View>
-        <View style={styles.body2}>
-          <Text style={styles.titleTxt}>AED 55</Text>
-          <Text style={styles.contentTxt}>AED 100</Text>
-        </View>
-      </View>
-    </View>
+      </ImageBackground>
+    </TouchableOpacity>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#e6dff1',
-    borderRadius: 20,
-    height: 170,
-    width: 325,
-    margin: 10,
-    flex: 1,
-  },
-  imageContainer: {
-    width: '100%',
-    height: '100%',
-    borderWidth: 2,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-    borderColor: '#e6dff1',
-  },
-  bodyContainer: {
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 5,
-    marginTop: -60,
-    backgroundColor: '#311a09',
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-    height: '40%',
-    width: '100%',
-    flexDirection: 'row',
-  },
-  body1: {
-    flex: 0.7,
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-    marginLeft: '2%',
-  },
-  body2: {
-    flex: 0.3,
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    marginRight: '2%',
-  },
-
-  titleTxt: {
-    color: '#959f9e',
-    fontSize: 16,
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  contentTxt: {
-    color: '#959f9e',
-    fontSize: 10,
-    textAlign: 'center',
-  },
-
-  contentTxt2: {
-    color: '#fff',
-    fontSize: 8,
-    textAlign: 'center',
-    textDecorationLine: 'line-through',
-    backgroundColor: '#c43b8d',
-    paddingHorizontal: 5,
-    borderRadius: 5,
-    alignItems: 'center',
-    marginTop: 5,
-  },
-});

@@ -59,14 +59,14 @@ export default function Login() {
               style={{ width: 20, height: 20 }}
             />
             <Text className="ml-2 text-gray-700 flex-shrink">
-              Sign In with Google h
+              Sign In with Google 
             </Text>{" "}
           </TouchableOpacity>
 
           {/* Divider */}
           <View className="flex-row items-center mb-4">
             <View className="flex-1 h-[1px] bg-gray-300" />
-            <Text className="mx-2 text-gray-500 text-sm">Or login with h</Text>
+            <Text className="mx-2 text-gray-500 text-sm">Or login with </Text>
             <View className="flex-1 h-[1px] bg-gray-300" />
           </View>
 
@@ -78,7 +78,7 @@ export default function Login() {
             onChangeText={setEmail}
             keyboardType="email-address"
             autoCapitalize="none"
-            className="border border-gray-300 rounded-xl px-4 py-3 mb-4"
+            className="border border-gray-300 text-black rounded-xl px-4 py-3 mb-4"
           />
 
           {/* Password */}
@@ -89,7 +89,7 @@ export default function Login() {
               secureTextEntry={!showPassword}
               value={password}
               onChangeText={setPassword}
-              className="flex-1 py-3"
+              className="flex-1 text-black py-3"
             />
             <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
               <Ionicons
@@ -101,16 +101,17 @@ export default function Login() {
           </View>
 
           {/* Forgot */}
-          <TouchableOpacity className="mt-2 mb-6 self-end">
+          <TouchableOpacity className="mt-2 mb-6 flex flex-row justify-between">
+             {error && (
+            <Text className="text-red-500 text-center mb-2">{error}</Text>
+          )}
             <Text className="text-gray-500 text-sm flex-shrink">
-              Forgot Password? h
+              Forgot Password?
             </Text>
           </TouchableOpacity>
 
           {/* Error */}
-          {error && (
-            <Text className="text-red-500 text-center mb-2">{error}</Text>
-          )}
+         
 
           {/* Login */}
           <TouchableOpacity

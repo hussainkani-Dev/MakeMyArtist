@@ -25,7 +25,7 @@
     "web": {
       "output": "static",
       "favicon": "./assets/images/favicon.png",
-        "bundler": "metro"
+      "bundler": "metro"
     },
     "plugins": [
       "expo-router",
@@ -45,6 +45,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "74ace5d5-d1c3-4990-8966-7ae977277d1f"
+      }
+    },
+    "owner": "devkani"
   }
 }
