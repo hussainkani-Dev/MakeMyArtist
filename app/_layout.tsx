@@ -1,11 +1,13 @@
-// app/_layout.tsx
-
 import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { Stack, usePathname } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect, useState } from "react";
 import "react-native-reanimated";
+import "react-native-gesture-handler";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+
 import "../global.css";
 
 import Loader from "../src/components/ui/Loader";
@@ -15,8 +17,8 @@ export const unstable_settings = {
 };
 
 export default function RootLayout() {
-  const pathname = usePathname(); // ✅ track route
-  const [loading, setLoading] = useState(false); // ✅ state added
+  const pathname = usePathname();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     SplashScreen.hideAsync();
@@ -27,26 +29,29 @@ export default function RootLayout() {
 
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 600); // adjust timing if needed
+    }, 600);
 
     return () => clearTimeout(timer);
-  }, [pathname]); // ✅ runs on every navigation
+  }, [pathname]);
 
   return (
-    <ThemeProvider value={DefaultTheme}>
-      <>
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="screens/SplashScreen" />
-          <Stack.Screen name="screens/EmailVerification.tsx" />
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ThemeProvider value={DefaultTheme}>
+        <BottomSheetModalProvider>
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="screens/SplashScreen" />
+            <Stack.Screen name="screens/EmailVerification" />
+            <Stack.Screen name="screens/login" />
+            <Stack.Screen name="screens/SignUp" />
+            <Stack.Screen name="(tabs)" />
+            <Stack.Screen name="screens/locationSearchView" />
+          </Stack>
 
-          <Stack.Screen name="screens/login" />
-          <Stack.Screen name="screens/SignUp.tsx" />
-          <Stack.Screen name="(tabs)" />
-          <Stack.Screen name="screens/locationSearchView" />
-        </Stack>
-        {loading && <Loader />} {/* ✅ now works */}
-        <StatusBar style="auto" />
-      </>
-    </ThemeProvider>
+          {loading && <Loader />}
+
+          <StatusBar style="auto" />
+        </BottomSheetModalProvider>
+      </ThemeProvider>
+    </GestureHandlerRootView>
   );
 }

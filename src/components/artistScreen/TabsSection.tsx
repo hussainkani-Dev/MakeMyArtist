@@ -32,7 +32,7 @@ export default function TabsSection() {
           >
             <Text
               className={`font-medium ${
-                active ? "text-orange-500" : "text-gray-500"
+                active ? "text-primary-pink" : "text-gray-500"
               }`}
             >
               {tab}

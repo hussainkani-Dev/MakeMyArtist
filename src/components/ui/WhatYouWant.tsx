@@ -5,50 +5,49 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-
+import { router } from "expo-router";
 import {
-  Scissors,
-  Hand,
-  Sparkles,
-  PaintBucket,
-  Waves,
-  Droplets,
   Brush,
+  Scissors,
+  Sparkles,
+  Hand,
   HeartPulse,
+  Flower2,
+  Palette,
+  Plus,
 } from "lucide-react-native";
-
 const services = [
   {
-    title: "Haircut",
-    icon: Scissors,
-  },
-  {
-    title: "Nails",
-    icon: Hand,
-  },
-  {
-    title: "Facial",
-    icon: Sparkles,
-  },
-  {
-    title: "Coloring",
-    icon: PaintBucket,
-  },
-  {
-    title: "Spa",
-    icon: Waves,
-  },
-  {
-    title: "Waxing",
-    icon: Droplets,
-  },
-  {
-    title: "Makeup",
+    title: "MAKEUP",
     icon: Brush,
   },
   {
-    title: "Massage",
+    title: "HAIR STYLING",
+    icon: Scissors,
+  },
+  {
+    title: "HAIR SPA",
+    icon: Sparkles,
+  },
+  {
+    title: "MEHENDI",
+    icon: Hand,
+  },
+  {
+    title: "SKIN CARE",
     icon: HeartPulse,
+  },
+  {
+    title: "NAIL ART",
+    icon: Palette,
+  },
+  {
+    title: "BRIDAL",
+    icon: Flower2,
+  },
+  {
+    title: "& MORE",
+    icon: Plus,
   },
 ];
 
@@ -112,18 +111,19 @@ const WhatYouWant = () => {
               key={index}
               activeOpacity={0.8}
               className="w-1/4 items-center mb-8"
+                onPress={() => router.push("/screens/ServiceMenu")}
             >
               {/* Icon Circle */}
-              <View className="w-16 h-16 border border-orange-500 rounded-full items-center justify-center bg-white shadow-sm">
+              <View className="w-16 h-16 border border-primary-pink rounded-full items-center justify-center bg-white shadow-sm">
                 <Icon
                   size={22}
-                  color="#EA580C"
+                  color="#CF2475"
                   strokeWidth={1.8}
                 />
               </View>
 
               {/* Title */}
-              <Text className="mt-2 text-sm text-orange-500 font-medium">
+              <Text className="mt-2 text-sm text-primary-pink font-medium">
                 {item.title}
               </Text>
             </TouchableOpacity>

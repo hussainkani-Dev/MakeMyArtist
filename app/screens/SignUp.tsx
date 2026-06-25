@@ -26,7 +26,7 @@ export default function SignUp() {
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View className="flex-1 mt-10 px-6 pt-6">
           {/* Title */}
-          <Text className="text-2xl font-semibold text-orange-600">
+          <Text className="text-2xl font-semibold text-primary-pink">
             Create an account,
           </Text>
           <Text className="text-gray-500 mt-2">
@@ -36,8 +36,8 @@ export default function SignUp() {
           {/* Form */}
           <View className="mt-6 space-y-6">
             {/* Name */}
-            <View className="flex-row items-center border border-orange-500 my-2 rounded-full px-4 py-3">
-              <Ionicons name="person-outline" size={18} color="#6b7280" />
+            <View className="flex-row items-center border border-primary-pink my-2 rounded-full px-4 py-3">
+              <Ionicons name="person-outline" size={18} color="#CF2475" />
               <TextInput
                 placeholder="Name"
                 value={name}
@@ -48,8 +48,8 @@ export default function SignUp() {
             </View>
 
             {/* Email */}
-            <View className="flex-row items-center border border-orange-500 my-2 rounded-full px-4 py-3">
-              <Ionicons name="mail-outline" size={18} color="#6b7280" />
+            <View className="flex-row items-center border border-primary-pink my-2 rounded-full px-4 py-3">
+              <Ionicons name="mail-outline" size={18} color="#CF2475" />
               <TextInput
                 placeholder="Email address"
                 value={email}
@@ -61,7 +61,7 @@ export default function SignUp() {
             </View>
 
             {/* Mobile */}
-            <View className="flex-row items-center border border-orange-500 my-2  rounded-full px-4 py-3">
+            <View className="flex-row items-center border border-primary-pink my-2  rounded-full px-4 py-3">
               <Text className="mr-2 text-gray-600">🇮🇳 +01</Text>
               <TextInput
                 placeholder="Mobile number"
@@ -74,8 +74,8 @@ export default function SignUp() {
             </View>
 
             {/* Password */}
-            <View className="flex-row items-center border my-2   border-orange-500 rounded-full px-4 py-3">
-              <Ionicons name="lock-closed-outline" size={18} color="#6b7280" />
+            <View className="flex-row items-center border my-2   border-primary-pink rounded-full px-4 py-3">
+              <Ionicons name="lock-closed-outline" size={18} color="#CF2475" />
               <TextInput
                 placeholder="Password"
                 value={password}
@@ -90,7 +90,7 @@ export default function SignUp() {
                 <Ionicons
                   name={showPassword ? "eye-outline" : "eye-off-outline"}
                   size={18}
-                  color="#6b7280"
+                  color="#CF2475"
                 />
               </TouchableOpacity>
             </View>
@@ -99,12 +99,12 @@ export default function SignUp() {
           {/* Terms */}
           <Text className="text-gray-400 text-xs mt-4 leading-5">
             By signing up you agree to our{" "}
-            <Text className="text-oborder-orange-500">Term of use</Text> and{" "}
-            <Text className="text-oborder-orange-500">privacy notice</Text>
+            <Text className="text-oborder-primary-pink">Term of use</Text> and{" "}
+            <Text className="text-oborder-primary-pink">privacy notice</Text>
           </Text>
 
           {/* Button */}
-          <TouchableOpacity className="bg-orange-600 rounded-full py-4 mt-6 items-center" onPress={() => router.push("/screens/EmailVerification")}>
+          <TouchableOpacity className="bg-secondary-purple rounded-full py-4 mt-6 items-center" onPress={() => router.push("/screens/EmailVerification")}>
             <Text className="text-white font-semibold text-base">
               Join Now
             </Text>
@@ -118,7 +118,7 @@ export default function SignUp() {
           </View>
 
           {/* Google Button */}
-          <TouchableOpacity className="border border-orange-500 rounded-full py-4 flex-row items-center justify-center">
+          <TouchableOpacity className="border border-primary-pink rounded-full py-4 flex-row items-center justify-center">
              <Image
                           source={require("../../assets/images/icons8-google-100.png")}
                           style={{ width: 20, height: 20 }}
@@ -133,7 +133,7 @@ export default function SignUp() {
             <Text className="text-gray-400">
               Already have an account?{" "}
             </Text>
-            <Text className="text-oborder-orange-500 font-medium" onPress={() => router.push("/screens/login")}>Sign In</Text>
+            <Text className="text-primary-pink border-primary-pink font-medium" onPress={() => router.push("/screens/login")}>Sign In</Text>
           </View>
         </View>
       </ScrollView>

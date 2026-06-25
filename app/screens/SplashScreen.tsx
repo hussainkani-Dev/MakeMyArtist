@@ -1,7 +1,6 @@
 import { View, Image, Dimensions } from "react-native";
 import { useEffect } from "react";
 import { useRouter } from "expo-router";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import Animated, {
   useSharedValue,
@@ -36,26 +35,10 @@ export default function SplashScreen() {
 
   // Check onboarding status
   const checkFirstLaunch = async () => {
-    try {
-      const hasSeenOnboarding = await AsyncStorage.getItem(
-        "hasSeenOnboarding"
-      );
-
-      setTimeout(async () => {
-        if (hasSeenOnboarding === "true") {
-          // User already saw onboarding
-          router.replace("/screens/login");
-        } else {
-          // First time user
-          await AsyncStorage.setItem("hasSeenOnboarding", "true");
-
-          router.replace("/screens/Onboarding");
-        }
-      }, 3000);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  setTimeout(() => {
+    router.replace("/screens/Onboarding");
+  }, 3000);
+};
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
@@ -68,7 +51,7 @@ export default function SplashScreen() {
       <View className="overflow-hidden">
         {/* Logo */}
         <Image
-          source={require("../../assets/images/app-logo.png")}
+          source={require("../../assets/images/Splash_Imgae_final.jpeg")}
           style={{ width: 220, height: 220 }}
           resizeMode="contain"
         />

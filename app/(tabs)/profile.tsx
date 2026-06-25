@@ -88,7 +88,7 @@ export default function Profile() {
           {/* Edit Profile Button */}
           <TouchableOpacity
             activeOpacity={0.8}
-            className="bg-orange-500 px-6 py-3 rounded-full mt-5"
+            className="bg-prborder-primary-pink px-6 py-3 rounded-full mt-5"
           >
             <Text className="text-white font-bold text-[15px]">
               Edit Profile
@@ -187,7 +187,7 @@ export default function Profile() {
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={() => logout()}
-          className="bg-white border border-orange-500 h-[62px] rounded-2xl items-center justify-center mt-5 mb-20"
+          className="bg-white  h-[62px] rounded-2xl items-center justify-center mt-5 mb-20"
         >
           <View className="flex-row items-center">
             <Ionicons
@@ -196,7 +196,7 @@ export default function Profile() {
               color="#000"
             />
 
-            <Text className="text-black text-lg font-bold ml-2">
+            <Text className="text-primary-purple text-lg font-bold ml-2">
               Logout
             </Text>
           </View>

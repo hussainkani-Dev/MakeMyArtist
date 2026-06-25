@@ -19,7 +19,7 @@ export default function ServiceCard({
   image,
 }: Props) {
   return (
-    <View className="w-[48%] bg-white rounded-3xl p-2 border border-orange-100 mb-4">
+    <View className="w-[48%] bg-white rounded-3xl p-2 border border-primary-pink mb-4">
       <Image
         source={{ uri: image }}
         className="w-full h-[120px] rounded-2xl"

@@ -35,7 +35,7 @@ export default function Login() {
         {/* TOP IMAGE */}
         <View className="h-[50%] w-full">
           <Image
-            source={require("../../assets/images/login_bg.png")}
+            source={require("../../assets/finalImage/login_image.png")}
             style={{ width: "100%", height: "100%" }}
             resizeMode="cover"
           />
@@ -53,37 +53,37 @@ export default function Login() {
         {/* CARD */}
         <View className="flex-1 relative -top-10 bg-white w-[95%] mx-auto rounded-[30px] px-6 pt-10 py-6 shadow-black min-h-full">
           {/* Google */}
-          <TouchableOpacity className="border border-gray-300 rounded-xl py-3 mb-4 items-center flex-row justify-center">
-            <Image
-              source={require("../../assets/images/icons8-google-100.png")}
-              style={{ width: 20, height: 20 }}
-            />
-            <Text className="ml-2 text-gray-700 flex-shrink">
-              Sign In with Google 
-            </Text>{" "}
-          </TouchableOpacity>
+         <TouchableOpacity className="border border-gray-300 rounded-xl py-3 mb-4 items-center flex-row justify-center">
+  <Image
+    source={require("../../assets/images/icons8-google-100.png")}
+    style={{ width: 20, height: 20 }}
+  />
+  <Text className="ml-2 text-gray-700 flex-shrink">
+    Sign In with Google
+  </Text>{" "}
+</TouchableOpacity>
 
           {/* Divider */}
           <View className="flex-row items-center mb-4">
             <View className="flex-1 h-[1px] bg-gray-300" />
-            <Text className="mx-2 text-gray-500 text-sm">Or login with </Text>
+            <Text className="mx-2 text-primary-purple font-medium text-sm">Or login with </Text>
             <View className="flex-1 h-[1px] bg-gray-300" />
           </View>
 
           {/* Email */}
-          <Text className="text-gray-500 text-sm mb-1">Email Address</Text>
+          <Text className="text-primary-pink text-sm mb-1">Email Address</Text>
           <TextInput
-            placeholder="Enter email"
+            placeholder="Enter your email..."
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
             autoCapitalize="none"
-            className="border border-gray-300 text-black rounded-xl px-4 py-3 mb-4"
+            className="border-b border-gray-300 text-black rounded-xl px-4 py-3 mb-4"
           />
 
           {/* Password */}
-          <Text className="text-gray-500 text-sm mb-1">Password</Text>
-          <View className="border border-gray-300 rounded-xl flex-row items-center px-4">
+          <Text className="text-primary-pink text-sm mb-1">Password</Text>
+          <View className="border-b border-gray-300 rounded-xl flex-row items-center px-4">
             <TextInput
               placeholder="Enter password"
               secureTextEntry={!showPassword}
@@ -105,7 +105,7 @@ export default function Login() {
              {error && (
             <Text className="text-red-500 text-center mb-2">{error}</Text>
           )}
-            <Text className="text-gray-500 text-sm flex-shrink">
+            <Text className="text-primary-pink text-sm flex-shrink">
               Forgot Password?
             </Text>
           </TouchableOpacity>
@@ -117,7 +117,7 @@ export default function Login() {
           <TouchableOpacity
             onPress={() => login(email, password)}
             disabled={loading}
-            className="bg-orange-600 py-4 rounded-full items-center"
+            className="bg-secondary-purple py-4 rounded-full items-center"
           >
             {loading ? (
               <ActivityIndicator size="small" color="#fff" />
@@ -131,7 +131,7 @@ export default function Login() {
             <Text className="text-gray-500">Don&apos;t have an account?</Text>
             <TouchableOpacity>
               <Text
-                className="text-orange-400 font-semibold ml-1"
+                className="text-primary-pink font-semibold ml-1"
                 onPress={() => router.push("/screens/SignUp")}
               >
                 Register Now

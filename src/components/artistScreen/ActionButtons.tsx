@@ -36,7 +36,7 @@ export default function ActionButtons() {
 
         return (
           <View key={index} className="items-center">
-            <TouchableOpacity className="w-14 h-14 rounded-full bg-orange-500 items-center justify-center">
+            <TouchableOpacity className="w-14 h-14 rounded-full bg-primary-pink items-center justify-center">
               <Icon size={22} color="#fff" />
             </TouchableOpacity>
 

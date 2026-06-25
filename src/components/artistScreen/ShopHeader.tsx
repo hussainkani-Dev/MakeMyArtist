@@ -34,7 +34,7 @@ export default function ShopHeader() {
           </TouchableOpacity>
 
           <View className="flex-row gap-2">
-            <View className="w-2 h-2 rounded-full bg-orange-400" />
+            <View className="w-2 h-2 rounded-full bg-primary-pink" />
             <View className="w-2 h-2 rounded-full bg-white/50" />
             <View className="w-2 h-2 rounded-full bg-white/50" />
           </View>

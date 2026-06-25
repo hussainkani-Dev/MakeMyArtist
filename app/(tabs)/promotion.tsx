@@ -110,7 +110,7 @@ export default function ServicesScreen() {
               <Image
                 key={item.id}
                 source={{ uri: item.image }}
-                className="w-[115px] h-[115px] border border-l-4 border-b-4 border-orange-500 rounded-3xl mr-4"
+                className="w-[115px] h-[115px] border border-l-4 border-b-4 border-primary-pink rounded-3xl mr-4"
               />
             ))}
           </ScrollView>
@@ -125,7 +125,7 @@ export default function ServicesScreen() {
           {servicesData.map((item) => (
             <TouchableOpacity
               key={item.id}
-              className="bg-white border-r-2 border-orange-500 rounded-[26px] p-2 mb-4 flex-row items-center"
+              className="bg-white border-r-2 border-primary-pink rounded-[26px] p-2 mb-4 flex-row items-center"
               activeOpacity={0.8}
             >
               {/* IMAGE */}
@@ -136,7 +136,7 @@ export default function ServicesScreen() {
 
               {/* CONTENT */}
               <View className="flex-1 ml-4">
-                <Text className="text-lg font-bold text-orange-500">
+                <Text className="text-lg font-bold text-prborder-primary-pink">
                   {item.title}
                 </Text>
 
@@ -149,7 +149,7 @@ export default function ServicesScreen() {
               <View
                 className={`w-10 h-10 rounded-full items-center justify-center ${
                   item.active
-                    ? "bg-orange-500"
+                    ? "bg-prborder-primary-pink"
                     : "bg-transparent"
                 }`}
               >

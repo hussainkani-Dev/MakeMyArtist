@@ -23,25 +23,25 @@ const DATA: Item[] = [
     id: "1",
     title: "Best Stylist For You",
     subtitle: "Styling your appearance according to your lifestyle",
-    image: require("../../assets/images/onboard_bg_1_1_11zon.jpg"),
+    image: require("../../assets/finalImage/onboard_1.png"),
   },
   {
     id: "2",
     title: "Meet Our Specialists",
     subtitle: "There are many best stylists from all the best salons ever",
-    image: require("../../assets/images/onboard_bg_2_2_11zon.jpg"),
+    image: require("../../assets/finalImage/onboard_2.png"),
   },
   {
     id: "3",
     title: "Find The Best Service",
     subtitle: "There are various services from the best salons",
-    image: require("../../assets/images/onboard_bg_3_3_11zon.jpg"),
+    image: require("../../assets/finalImage/onboard_3.png"),
   },
   {
     id: "4",
     title: "Let's Join with Us",
     subtitle: "Find and book Beauty, Salon, Barber and Spa services",
-    image: require("../../assets/images/onboard_bg_4_4_11zon.jpg"),
+    image: require("../../assets/finalImage/onboard_4.png"),
   },
 ];
 
@@ -66,12 +66,12 @@ export default function Onboarding() {
           className="flex-1 "
         >
           {/* Overlay */}
-          <View className="flex-1 bg-black/30 justify-end p-6">
+          <View className="flex-1 justify-end p-6">
             {/* Text */}
-            <Text className="text-white pb-10 text-4xl font-semibold text-center">
+            <Text className="text-white pb-5 text-4xl font-extrabold text-center">
               {item.title}
             </Text>
-            <Text className="text-white text-3xl pb-20 text-center mt-2">
+            <Text className="text-white text-3xl pb-10 font-bold text-center mt-2">
               {item.subtitle}
             </Text>
 
@@ -81,7 +81,7 @@ export default function Onboarding() {
                 <View
                   key={i}
                   className={`h-2 rounded-full mx-1 ${
-                    i === currentIndex ? "w-6 bg-orange-400" : "w-2 bg-gray-400"
+                    i === currentIndex ? "w-6 bg-primary-pink" : "w-2 bg-gray-400"
                   }`}
                 />
               ))}
@@ -92,9 +92,9 @@ export default function Onboarding() {
               {!isLast ? (
                 <TouchableOpacity
                   onPress={handleNext}
-                  className="bg-orange-500 py-4 rounded-full items-center"
+                  className="bg-white py-4 rounded-full items-center"
                 >
-                  <Text className="text-white font-semibold">Next</Text>
+                  <Text className="text-secondary-purple font-semibold">Next</Text>
                 </TouchableOpacity>
               ) : (
                 <>
@@ -105,7 +105,7 @@ export default function Onboarding() {
                   </TouchableOpacity>
 
                   <TouchableOpacity
-                    className="bg-orange-500 py-4 rounded-full items-center"
+                    className="bg-orange-pr py-4 rounded-full items-center"
                     onPress={() => router.push("/screens/SignUp")}
                   >
                     <Text className="text-white font-semibold">
@@ -117,10 +117,10 @@ export default function Onboarding() {
             </View>
 
             {/* Sign in */}
-            <Text className="text-center text-gray-300 mt-4">
+            <Text className="text-center text-gray-300 mb-20 mt-4">
               Already have an account?{" "}
               <Text
-                className="text-orange-400"
+                className="text-white font-semibold"
                 onPress={() => router.push("/screens/login")}
               >
                 Sign in

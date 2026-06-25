@@ -1,5 +1,5 @@
 import { Text, TouchableOpacity, View } from "react-native";
-
+import { router } from "expo-router";
 type Props = {
   item: {
     title: string;
@@ -19,9 +19,11 @@ export default function ListTitleCardItem({
 
       <TouchableOpacity
         className="  py-2 rounded-xl  justify-center items-center"
-        onPress={() => onPress(item)}
+        onPress={() => {
+                  router.push("/screens/BookingScreen");
+                }}
       >
-        <Text className="text-orange-500 text-center font-medium">
+        <Text className="text-primary-pink text-center font-medium">
           View More
         </Text>
       </TouchableOpacity>

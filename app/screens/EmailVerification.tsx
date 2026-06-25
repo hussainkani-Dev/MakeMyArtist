@@ -50,7 +50,7 @@ export default function EmailVerification() {
   return (
     <View className="flex-1 bg-white px-6 justify-center">
       {/* Title */}
-      <Text className="text-2xl font-semibold text-orange-600 mb-2">
+      <Text className="text-2xl font-semibold text-primary-pink mb-2">
         Email verification.
       </Text>
       <Text className="text-gray-500 mb-10">
@@ -70,8 +70,8 @@ export default function EmailVerification() {
             onKeyPress={(e) => handleKeyPress(e, index)}
             keyboardType="number-pad"
             maxLength={1}
-            className={`w-16 h-16 border border-orange-500 text-center text-xl rounded-xl ${
-              digit ? "bg-gray-100 text-black" : "bg-gray-100 text-black"
+            className={`w-16 h-16 border border-primary-pink text-center text-xl rounded-xl ${
+              digit ? " text-black" : " text-black"
             }`}
           />
         ))}
@@ -80,13 +80,13 @@ export default function EmailVerification() {
       {/* Resend */}
       <Text className="text-right text-gray-500 mb-10">
         Resend on{" "}
-        <Text className="text-orange-600 font-medium">{formatTime()}</Text>
+        <Text className="text-primary-pink font-medium">{formatTime()}</Text>
       </Text>
 
       {/* Button */}
       <TouchableOpacity
         onPress={() => router.push("/screens/NewPassword")}
-        className="bg-orange-500 py-4 rounded-full items-center"
+        className="bg-secondary-purple py-4 rounded-full items-center"
       >
         <Text className="text-white font-semibold text-base">Verify Email</Text>
       </TouchableOpacity>

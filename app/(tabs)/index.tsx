@@ -62,8 +62,11 @@ const salons = [
 ];
 
 export default function Home() {
+  const handleProfileRedirect = () => {
+    router.push("/(tabs)/profile");
+  };
+
   const handleLocRedirect = () => {
-    console.log("pressedLoc");
     router.push("/screens/locationSearchView");
   };
   return (
@@ -81,8 +84,8 @@ export default function Home() {
               <View className="flex-row justify-between items-center px-5 pt-5">
                 {/* Left Side */}
                 <View className="flex-row gap-2 items-center">
-                  <TouchableOpacity>
-                    <View className="w-10 h-10 rounded-full bg-orange-500  items-center justify-center">
+                  <TouchableOpacity onPress={handleProfileRedirect}>
+                    <View className="w-10 h-10 rounded-full bg-primary-pink items-center justify-center">
                       <Ionicons name="person" size={18} color="#fff" />
                     </View>
                   </TouchableOpacity>
@@ -95,34 +98,26 @@ export default function Home() {
 
                 {/* Right Profile */}
 
-                <TouchableOpacity
-                  onPress={handleLocRedirect}
-                  className="flex-row items-center "
-                >
-                  <Ionicons
-                    name="location-sharp"
-                    size={25}
-                    className="text-orange-500"
-                  />
+                <TouchableOpacity className="flex-row items-center ">
+                  <Ionicons name="location-sharp" size={25} color="#CF2475" />
                   <Text className="text-lg text-gray-500 ml-1">Dubai, UAE</Text>
                 </TouchableOpacity>
               </View>
 
               {/* Search Bar */}
-              <View className="mt-4 mx-5 flex-row items-center border border-orange-500 shadow-black bg-white rounded-xl px-3  h-[50px]">
+              <TouchableOpacity
+                activeOpacity={0.8}
+                onPress={handleLocRedirect}
+                className="mt-4 mx-5 flex-row items-center border border-primary-pink bg-white rounded-xl px-3 h-[50px]"
+              >
                 {/* Search Icon */}
                 <Ionicons name="search" size={18} color="#7c7c7c" />
 
                 {/* Placeholder */}
-                <Text className="ml-2 flex-1 text-gray-500 text-[13px]">
+                <Text className="ml-2 flex-1 text-[13px] text-gray-500">
                   Find your best artist
                 </Text>
-
-                {/* Filter Icon */}
-                <View className="bg-orange-500 p-2 rounded-lg">
-                  <Ionicons name="options-outline" size={16} color="#fff" />
-                </View>
-              </View>
+              </TouchableOpacity>
             </View>
             <View className="bg-white">
               <AutoBannerList bannerList={banners} />

@@ -28,7 +28,7 @@ export default function RecommendationCard({ item }: Props) {
     <TouchableOpacity
       activeOpacity={0.9}
       className="w-96 h-64 rounded-lg mx-0.5 overflow-hidden bg-white"
-       onPress={() => router.push("/screens/ShopDetailsScreen")}
+       onPress={() => router.push("/screens/ShopDetails")}
     >
       <ImageBackground
         source={
@@ -41,7 +41,7 @@ export default function RecommendationCard({ item }: Props) {
         {/* Top Section */}
         <View className="flex-row items-start justify-between px-4 pt-4">
           {/* Recommendation Badge */}
-          <View className="bg-orange-500 px-4 py-2 rounded-full">
+          <View className="bg-primary-pink px-4 py-2 rounded-full">
             <Text className="text-white text-[13px] font-semibold">
               Recommendation
             </Text>

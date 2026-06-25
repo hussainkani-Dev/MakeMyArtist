@@ -3,7 +3,7 @@ import { Tabs } from "expo-router";
 import React from "react";
 import { View } from "react-native";
 
-const ACTIVE_COLOR = "#f97316";
+const ACTIVE_COLOR = "#CF2475";
 const INACTIVE_COLOR = "transparent";
 
 const TabIcon = ({ name, focused }: any) => {
@@ -22,7 +22,7 @@ const TabIcon = ({ name, focused }: any) => {
       <Ionicons
         name={focused ? name : `${name}-outline`}
         size={22}
-        color={focused ? "#ffffff" : "#9ca3af"}
+        color={focused ? "#ffffff" : "#CF2475"}
       />
     </View>
   );

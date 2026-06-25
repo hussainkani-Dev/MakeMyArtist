@@ -55,14 +55,14 @@ export default function NrBySalonCardItem({
         <View className="absolute top-3 left-3 w-8 h-8 rounded-full bg-white items-center justify-center">
           <Heart
             size={14}
-            color="#EA580C"
+            color="#CF2475"
             fill="#EA580C"
           />
         </View>
 
         {/* Distance Badge */}
-        <View className="absolute bottom-5 left-0 bg-[#FFF5E6] px-3 py-2 rounded-r-full">
-          <Text className="text-orange-500 font-bold text-sm">
+        <View className="absolute bottom-5 left-0 bg-[#ffe6fb] px-3 py-2 rounded-r-full">
+          <Text className="text-primary-pink font-bold text-sm">
             {item?.distance || "1,1km"}
           </Text>
         </View>
@@ -72,7 +72,7 @@ export default function NrBySalonCardItem({
       <View className="flex-1 px-5 py-2 justify-between">
         <View>
           {/* Category */}
-          <Text className="text-orange-500 text-base font-medium mb-1">
+          <Text className="text-primary-pink text-base font-medium mb-1">
             {item?.category || "Hair . Facial"}
           </Text>
 

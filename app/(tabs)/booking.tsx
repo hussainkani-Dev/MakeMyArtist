@@ -125,7 +125,7 @@ export default function Booking() {
           {/* Add Button */}
           <TouchableOpacity
             activeOpacity={0.8}
-            className="w-12 h-12 rounded-full bg-orange-500 items-center justify-center"
+            className="w-12 h-12 rounded-full bg-primary-pink items-center justify-center"
           >
             <CalendarPlus2
               size={18}
@@ -142,7 +142,7 @@ export default function Booking() {
               activeOpacity={0.8}
               className={`w-[68px] h-[92px] rounded-[24px] mr-4 items-center justify-center ${
                 item.active
-                  ? "bg-orange-500"
+                  ? "bg-primary-pink"
                   : "bg-white"
               }`}
             >
@@ -202,7 +202,7 @@ export default function Booking() {
                   source={{
                     uri: item.image,
                   }}
-                  className="w-[58px] border-2 border-orange-500 h-[58px] rounded-full"
+                  className="w-[58px] border-2 border-primary-pink h-[58px] rounded-full"
                 />
 
                 <View className="ml-4 flex-1">

@@ -118,7 +118,7 @@ export default function AutoBannerList({ bannerList }: Props) {
             key={index}
             className={`mx-1 rounded-full ${
               currentIndex === index
-                ? "bg-orange-500 w-3 h-3"
+                ? "bg-primary-pink w-3 h-3"
                 : "bg-gray-300 w-2 h-2"
             }`}
           />

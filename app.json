@@ -4,7 +4,7 @@
     "slug": "MakeMyArtist",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/app-logo.png",
+    "icon": "./assets/images/Splash_Imgae_final.jpeg",
     "scheme": "makemyartist",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -24,7 +24,7 @@
     },
     "web": {
       "output": "static",
-      "favicon": "./assets/images/favicon.png",
+      "favicon": "./assets/images/Splash_Imgae_final.jpeg",
       "bundler": "metro"
     },
     "plugins": [
@@ -32,7 +32,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-image.jpeg",
+          "image": "./assets/images/Splash_Imgae_final.jpeg",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff",

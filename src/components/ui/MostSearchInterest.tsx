@@ -13,7 +13,7 @@ import {
   Brush,
   Waves,
 } from "lucide-react-native";
-
+import { router } from "expo-router";
 const categories = [
   {
     title: "Haircut",
@@ -56,21 +56,22 @@ const MostSearchInterest = () => {
 
           return (
             <TouchableOpacity
+              onPress={() => router.push("/screens/ServiceMenu")}
               key={index}
               activeOpacity={0.8}
-              className="bg-orange-50 rounded-full  border-l-2 border-b-2  border-orange-600 px-7 py-4 mr-4 flex-row items-center "
+              className="bg-[#fbf0f5] rounded-full  border-l-2 border-b-2  border-primary-pink px-7 py-4 mr-4 flex-row items-center "
             >
               {/* Icon */}
               <View className="mr-4">
                 <Icon
                   size={20}
-                  color="#EA580C"
+                  color="#CF2475"
                   strokeWidth={1.7}
                 />
               </View>
 
               {/* Title */}
-              <Text className="text-black text-base font-medium">
+              <Text className="text-primary-pink text-base font-medium">
                 {item.title}
               </Text>
             </TouchableOpacity>

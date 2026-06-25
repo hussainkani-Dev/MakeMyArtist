@@ -139,7 +139,7 @@ export default function ChatScreen() {
         </Text>
 
         {item.unread && (
-          <View className="w-5 h-5 rounded-full bg-orange-500 items-center justify-center">
+          <View className="w-5 h-5 rounded-full bg-primary-pink items-center justify-center">
             <Text className="text-white text-[11px] font-bold">
               {item.unread}
             </Text>
@@ -212,7 +212,7 @@ export default function ChatScreen() {
             <Text
               className={`text-[16px] font-semibold ${
                 activeTab === tab
-                  ? "text-orange-500"
+                  ? "text-primary-pink"
                   : "text-gray-300"
               }`}
             >

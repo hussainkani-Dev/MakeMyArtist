@@ -30,7 +30,7 @@ export default function UpcomingAppointmentCard() {
               value={true}
               trackColor={{
                 false: "#d1d5db",
-                true: "#EA580C",
+                true: "#CF2475",
               }}
               thumbColor="#ffffff"
             />
@@ -86,16 +86,16 @@ export default function UpcomingAppointmentCard() {
           
           {/* Cancel */}
           <TouchableOpacity
-            className="flex-1 h-[40px] border border-orange-500 rounded-xl items-center justify-center mr-2"
+            className="flex-1 h-[40px] border border-primary-pink rounded-xl items-center justify-center mr-2"
           >
-            <Text className="text-orange-500 font-semibold text-base">
+            <Text className="text-primary-pink font-semibold text-base">
               Cancel Booking
             </Text>
           </TouchableOpacity>
 
           {/* Reschedule */}
           <TouchableOpacity
-            className="flex-1 h-[40px] bg-orange-500 rounded-xl items-center justify-center"
+            className="flex-1 h-[40px] bg-primary-pink rounded-xl items-center justify-center"
           >
             <Text className="text-white font-bold text-base">
               Reschedule
