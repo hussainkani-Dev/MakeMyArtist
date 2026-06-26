@@ -53,20 +53,22 @@ export default function Login() {
         {/* CARD */}
         <View className="flex-1 relative -top-10 bg-white w-[95%] mx-auto rounded-[30px] px-6 pt-10 py-6 shadow-black min-h-full">
           {/* Google */}
-         <TouchableOpacity className="border border-gray-300 rounded-xl py-3 mb-4 items-center flex-row justify-center">
-  <Image
-    source={require("../../assets/images/icons8-google-100.png")}
-    style={{ width: 20, height: 20 }}
-  />
-  <Text className="ml-2 text-gray-700 flex-shrink">
-    Sign In with Google
-  </Text>{" "}
-</TouchableOpacity>
+          <TouchableOpacity className="border border-gray-300 rounded-xl py-3 mb-4 items-center flex-row justify-center">
+            <Image
+              source={require("../../assets/images/icons8-google-100.png")}
+              style={{ width: 20, height: 20 }}
+            />
+            <Text className="ml-2 text-gray-700 flex-shrink">
+              Sign In with Google
+            </Text>
+          </TouchableOpacity>
 
           {/* Divider */}
           <View className="flex-row items-center mb-4">
             <View className="flex-1 h-[1px] bg-gray-300" />
-            <Text className="mx-2 text-primary-purple font-medium text-sm">Or login with </Text>
+            <Text className="mx-2 text-primary-purple font-medium text-sm">
+              Or login with{" "}
+            </Text>
             <View className="flex-1 h-[1px] bg-gray-300" />
           </View>
 
@@ -102,16 +104,15 @@ export default function Login() {
 
           {/* Forgot */}
           <TouchableOpacity className="mt-2 mb-6 flex flex-row justify-between">
-             {error && (
-            <Text className="text-red-500 text-center mb-2">{error}</Text>
-          )}
+            {error && (
+              <Text className="text-red-500 text-center mb-2">{error}</Text>
+            )}
             <Text className="text-primary-pink text-sm flex-shrink">
               Forgot Password?
             </Text>
           </TouchableOpacity>
 
           {/* Error */}
-         
 
           {/* Login */}
           <TouchableOpacity

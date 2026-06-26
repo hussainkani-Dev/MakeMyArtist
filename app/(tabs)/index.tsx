@@ -130,6 +130,7 @@ export default function Home() {
               <ListTitleCardItem
                 item={{ title: "Upcoming Appointment Card" }}
                 onPress={(item) => console.log("Pressed:")}
+                  route="screens/BookingScreen"
               />
               <UpcomingAppointmentCard />
             </View>
@@ -137,6 +138,7 @@ export default function Home() {
               <ListTitleCardItem
                 item={{ title: "Exclusive Deals" }}
                 onPress={(item) => console.log("Pressed:")}
+                  route="screens/SuggestedServicesScreen"
               />
               <FlatList
                 data={dataTopSveList}
@@ -156,6 +158,7 @@ export default function Home() {
               <ListTitleCardItem
                 item={{ title: "Top Services" }}
                 onPress={(item) => console.log("Pressed:")}
+                  route="/screens/SuggestedServicesScreen"
               />
 
               <FlatList
@@ -178,6 +181,8 @@ export default function Home() {
               <ListTitleCardItem
                 item={{ title: "Featured Salons" }}
                 onPress={(item) => console.log("Pressed:")}
+                                  route="screens/SuggestedServicesScreen"
+
               />
               <FlatList
                 data={dataTopSveList}
@@ -196,6 +201,8 @@ export default function Home() {
               <ListTitleCardItem
                 item={{ title: "Most Search Interest" }}
                 onPress={(item) => console.log("Pressed:")}
+                                  route="/screens/ServiceMenu"
+
               />
               <MostSearchInterest />
             </View>
@@ -203,6 +210,8 @@ export default function Home() {
               <ListTitleCardItem
                 item={{ title: "Nearby Salons" }}
                 onPress={(item) => console.log("Pressed:")}
+                                  route="screens/SuggestedServicesScreen"
+
               />
               <FlatList
                 data={dataTopSveList.slice(0, 5)}

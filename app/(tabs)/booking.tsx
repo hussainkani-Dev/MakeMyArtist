@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  ScrollView,
-} from "react-native";
-
+import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
+import { router } from "expo-router";
 import {
   CalendarDays,
   ChevronDown,
@@ -41,8 +35,7 @@ const appointments = [
     service: "Hair & Beard Cut",
     time: "10:00 AM",
     status: "Success",
-    image:
-      "https://randomuser.me/api/portraits/men/32.jpg",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
     success: true,
   },
   {
@@ -51,8 +44,7 @@ const appointments = [
     service: "Beard Trim & Style",
     time: "10:30 AM",
     status: "Pending",
-    image:
-      "https://randomuser.me/api/portraits/men/44.jpg",
+    image: "https://randomuser.me/api/portraits/men/44.jpg",
   },
   {
     id: 3,
@@ -60,16 +52,14 @@ const appointments = [
     service: "Hair & Beard Cut",
     time: "11:00 AM",
     status: "Pending",
-    image:
-      "https://randomuser.me/api/portraits/men/55.jpg",
+    image: "https://randomuser.me/api/portraits/men/55.jpg",
   },
   {
     id: 4,
     name: "Ethan James",
     service: "Trendy Hair Blonde",
     time: "12:00 PM",
-    image:
-      "https://randomuser.me/api/portraits/men/76.jpg",
+    image: "https://randomuser.me/api/portraits/men/76.jpg",
     status: "Pending",
   },
   {
@@ -77,8 +67,7 @@ const appointments = [
     name: "James Taylor",
     service: "Hair Cut & Blonde",
     time: "12:30 PM",
-    image:
-      "https://randomuser.me/api/portraits/men/12.jpg",
+    image: "https://randomuser.me/api/portraits/men/12.jpg",
     status: "Pending",
   },
   {
@@ -86,8 +75,7 @@ const appointments = [
     name: "Ethan Carter",
     service: "Facial Treatment",
     time: "01:00 PM",
-    image:
-      "https://randomuser.me/api/portraits/men/89.jpg",
+    image: "https://randomuser.me/api/portraits/men/89.jpg",
     status: "Pending",
   },
 ];
@@ -104,33 +92,29 @@ export default function Booking() {
           {/* Date Picker */}
           <TouchableOpacity
             activeOpacity={0.8}
+            onPress={() => router.push("/screens/BookingScreen")}
             className="flex-row items-center bg-white px-4 py-3 rounded-2xl"
           >
-            <CalendarDays
-              size={14}
-              color="#1F2937"
-            />
+            <CalendarDays size={14} color="#1F2937" />
 
             <Text className="text-[#1F2937] font-semibold text-sm ml-3">
               Sun, 11 May 25
             </Text>
 
-            <ChevronDown
+            {/* <ChevronDown
               size={12}
               color="#6B7280"
               style={{ marginLeft: 8 }}
-            />
+            /> */}
           </TouchableOpacity>
 
           {/* Add Button */}
           <TouchableOpacity
             activeOpacity={0.8}
+            onPress={() => router.push("/screens/BookingScreen")}
             className="w-12 h-12 rounded-full bg-primary-pink items-center justify-center"
           >
-            <CalendarPlus2
-              size={18}
-              color="white"
-            />
+            <CalendarPlus2 size={18} color="white" />
           </TouchableOpacity>
         </View>
 
@@ -141,16 +125,12 @@ export default function Booking() {
               key={index}
               activeOpacity={0.8}
               className={`w-[68px] h-[92px] rounded-[24px] mr-4 items-center justify-center ${
-                item.active
-                  ? "bg-primary-pink"
-                  : "bg-white"
+                item.active ? "bg-primary-pink" : "bg-white"
               }`}
             >
               <Text
                 className={`text-base font-bold ${
-                  item.active
-                    ? "text-white"
-                    : "text-[#374151]"
+                  item.active ? "text-white" : "text-[#374151]"
                 }`}
               >
                 {item.day}
@@ -158,9 +138,7 @@ export default function Booking() {
 
               <Text
                 className={`text-base font-bold mt-1 ${
-                  item.active
-                    ? "text-white"
-                    : "text-[#111827]"
+                  item.active ? "text-white" : "text-[#111827]"
                 }`}
               >
                 {item.date}
@@ -173,19 +151,13 @@ export default function Booking() {
             activeOpacity={0.8}
             className="w-[68px] h-[92px] rounded-[24px] bg-white items-center justify-center"
           >
-            <ChevronRight
-              size={26}
-              color="#9CA3AF"
-            />
+            <ChevronRight size={26} color="#9CA3AF" />
           </TouchableOpacity>
         </View>
 
         {/* Appointment Title */}
         <Text className="text-lg font-bold text-[#111827] mt-10">
-          Appointment{" "}
-          <Text className="text-[#7C8BA0] font-semibold">
-            (6)
-          </Text>
+          Appointment <Text className="text-[#7C8BA0] font-semibold">(6)</Text>
         </Text>
 
         {/* Appointment List */}
@@ -226,16 +198,12 @@ export default function Booking() {
               <View className="items-end">
                 <View
                   className={`px-4 py-2 rounded-full ${
-                    item.success
-                      ? "bg-[#E6FFF2]"
-                      : "bg-[#FFF6DB]"
+                    item.success ? "bg-[#E6FFF2]" : "bg-[#FFF6DB]"
                   }`}
                 >
                   <Text
                     className={`text-xs font-bold ${
-                      item.success
-                        ? "text-[#22C55E]"
-                        : "text-[#EAB308]"
+                      item.success ? "text-[#22C55E]" : "text-[#EAB308]"
                     }`}
                   >
                     {item.status}

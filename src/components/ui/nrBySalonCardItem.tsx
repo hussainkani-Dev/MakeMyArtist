@@ -19,7 +19,7 @@ type Props = {
   };
   onPress: (item: any) => void;
 };
-
+import { router } from "expo-router";
 export default function NrBySalonCardItem({
   item,
   onPress,
@@ -27,7 +27,8 @@ export default function NrBySalonCardItem({
   return (
     <TouchableOpacity
       activeOpacity={0.9}
-      onPress={() => onPress(item)}
+                     onPress={() => router.push("/screens/ShopDetails")}
+     
       className="bg-white rounded-3xl mx-4 my-3 overflow-hidden flex-row shadow-lg"
       style={{
         elevation: 6,

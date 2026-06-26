@@ -1,167 +1,231 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import {
   View,
   Text,
   Image,
   TouchableOpacity,
-  ScrollView,
+  FlatList,
   SafeAreaView,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
+export default function ServiceMenuScreen() {
+  const [selectedTab, setSelectedTab] = useState("Haircut");
 
-import {
-  ArrowLeft,
-  Search,
-  ChevronRight,
-} from "lucide-react-native";
+  const [services, setServices] = useState([
+    {
+      id: "1",
+      image:
+        "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600",
+      title: "Woman Blunt Cut",
+      price: 50,
+      oldPrice: 70,
+      duration: "2 hour",
+      discount: 20,
+      description:
+        "A blunt cut bob is a shorter hairstyle that's cut straight across.",
+      qty: 1,
+    },
+    {
+      id: "2",
+      image:
+        "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600",
+      title: "Bob / Lob Cut",
+      price: 55,
+      oldPrice: 70,
+      duration: "1.5 hour",
+      discount: 20,
+      description: "Lob haircut is a women's hairstyle that is cut somewhere.",
+      qty: 0,
+    },
+    {
+      id: "3",
+      image:
+        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600",
+      title: "Medium Length Layer Cut",
+      price: 80,
+      oldPrice: 100,
+      duration: "1 hour",
+      discount: 0,
+      description:
+        "Layered hair is a hairstyle that gives the illusion of length.",
+      qty: 0,
+    },
+    {
+      id: "4",
+      image: "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=600",
+      title: "V-Shaped Cut",
+      price: 90,
+      oldPrice: 120,
+      duration: "2.5 hour",
+      discount: 5,
+      description: "There are a lot of variations between V-shaped haircuts.",
+      qty: 0,
+    },
+  ]);
 
-const specialistData = [
-  {
-    id: "1",
-    image:
-      "https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=400",
-  },
-  {
-    id: "2",
-    image:
-      "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=400",
-  },
-  {
-    id: "3",
-    image:
-      "https://images.unsplash.com/photo-1512690459411-b0fd1c86b8c8?q=80&w=400",
-  },
-  {
-    id: "4",
-    image:
-      "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?q=80&w=400",
-  },
-];
+  const handleAdd = (id) => {
+    setServices((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, qty: item.qty + 1 } : item,
+      ),
+    );
+  };
 
-const servicesData = [
-  {
-    id: "1",
-    title: "Hair cutting",
-    salon: "Barbershop (2518)",
-    image:
-      "https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=400",
-    active: false,
-  },
-  {
-    id: "2",
-    title: "Treatment",
-    salon: "Barbershop (2518)",
-    image:
-      "https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=400",
-    active: false,
-  },
-  {
-    id: "3",
-    title: "Shaving",
-    salon: "Barbershop (2518)",
-    image:
-      "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=400",
-    active: true,
-  },
-  {
-    id: "4",
-    title: "Kids hair cut",
-    salon: "Barbershop (2518)",
-    image:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400",
-    active: false,
-  },
-];
+  const handleRemove = (id) => {
+    setServices((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, qty: Math.max(0, item.qty - 1) } : item,
+      ),
+    );
+  };
 
-export default function ServicesScreen() {
-  return (
-    <SafeAreaView className="flex-1 my-10 bg-gray-50">
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{
-          paddingBottom: 30,
-        }}
-      >
-        {/* HEADER */}
-        <View className="flex-row items-center justify-between px-5 pt-5">
-          <TouchableOpacity className="w-11 h-11 rounded-full bg-white items-center justify-center">
-            <ArrowLeft size={20} color="#222" />
-          </TouchableOpacity>
+  const total = useMemo(() => {
+    return services.reduce((sum, item) => sum + item.price * item.qty, 0);
+  }, [services]);
 
-          <Text className="text-xl font-bold text-[#222]">
-            Services
-          </Text>
+  const totalServices = useMemo(() => {
+    return services.reduce((sum, item) => sum + item.qty, 0);
+  }, [services]);
 
-          <TouchableOpacity className="w-11 h-11 rounded-full bg-white items-center justify-center">
-            <Search size={20} color="#222" />
-          </TouchableOpacity>
-        </View>
+  const renderItem = ({ item }) => (
+    <View className="bg-white rounded-2xl p-2  mb-3 flex-row">
+      <Image source={{ uri: item.image }} className="w-24 h-24 rounded-xl" />
 
-        {/* CHOOSE SPECIALIST */}
-        <View className="mt-8 px-5">
-          <Text className="text-xl font-bold text-[#222] mb-5">
-            Choose Specialist
-          </Text>
-
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-          >
-            {specialistData.map((item) => (
-              <Image
-                key={item.id}
-                source={{ uri: item.image }}
-                className="w-[115px] h-[115px] border border-l-4 border-b-4 border-primary-pink rounded-3xl mr-4"
-              />
-            ))}
-          </ScrollView>
-        </View>
-
-        {/* CHOICE SALONE */}
-        <View className="mt-8 px-5">
-          <Text className="text-xl font-bold text-[#222] mb-5">
-            Choice Salone
-          </Text>
-
-          {servicesData.map((item) => (
-            <TouchableOpacity
-              key={item.id}
-              className="bg-white border-r-2 border-primary-pink rounded-[26px] p-2 mb-4 flex-row items-center"
-              activeOpacity={0.8}
+      <View className="flex-1 ml-3 justify-between">
+        <View>
+          <View className="flex-row justify-between items-center">
+            <Text
+              numberOfLines={1}
+              className="text-[13px] font-semibold text-gray-800 flex-1"
             >
-              {/* IMAGE */}
-              <Image
-                source={{ uri: item.image }}
-                className="w-[82px] h-[82px] rounded-[22px]"
+              {item.title}
+            </Text>
+
+            {item.discount > 0 && (
+              <Text className="text-orange-500 text-[11px] font-semibold">
+                - {item.discount}%
+              </Text>
+            )}
+          </View>
+
+          <View className="flex-row items-center mt-1">
+            <Text className="text-primary-pink font-bold text-[15px]">
+              AED {item.price}
+            </Text>
+
+            <Text className="text-gray-400 text-[11px] ml-2">
+              • {item.duration}
+            </Text>
+          </View>
+
+          <Text
+            numberOfLines={2}
+            className="text-gray-400 text-[11px] mt-1 leading-4"
+          >
+            {item.description}
+          </Text>
+        </View>
+      </View>
+
+      <View className="justify-center items-center">
+        {item.qty === 0 ? (
+          <TouchableOpacity
+            onPress={() => handleAdd(item.id)}
+            className="w-8 h-8 rounded-full bg-primary-pink items-center justify-center"
+          >
+            <Ionicons name="add" size={18} color="#fff" />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity
+            onPress={() => handleRemove(item.id)}
+            className="w-8 h-8 rounded-full border border-red-400 items-center justify-center"
+          >
+            <Ionicons name="remove" size={18} color="#ef4444" />
+          </TouchableOpacity>
+        )}
+      </View>
+    </View>
+  );
+
+  return (
+    <SafeAreaView className="flex-1 pt-14 bg-white">
+      {/* Header */}
+      <View className="px-5 pt-4">
+        <View className="flex-row items-center justify-between">
+          <TouchableOpacity onPress={() => router.back()}>
+            <Ionicons name="chevron-back" size={22} color="#000" />
+          </TouchableOpacity>
+
+          <Text className="font-semibold text-xl">Service Menu</Text>
+
+          <View style={{ width: 22 }} />
+        </View>
+
+        {/* Tabs */}
+        <View className="flex-row mt-5 mb-4">
+          {["Haircut", "Facial", "Nails"].map((tab) => (
+            <TouchableOpacity
+              key={tab}
+              onPress={() => setSelectedTab(tab)}
+              className={`mr-3 px-4 py-2 rounded-full flex-row items-center ${
+                selectedTab === tab
+                  ? "bg-[#f7e4f5] border border-primary-pink"
+                  : "bg-[#f8eaf7]"
+              }`}
+            >
+              <Ionicons
+                name={
+                  tab === "Haircut"
+                    ? "cut"
+                    : tab === "Facial"
+                      ? "happy-outline"
+                      : "hand-left-outline"
+                }
+                size={26}
+                color="#CF2475"
               />
-
-              {/* CONTENT */}
-              <View className="flex-1 ml-4">
-                <Text className="text-lg font-bold text-prborder-primary-pink">
-                  {item.title}
-                </Text>
-
-                <Text className="text-base text-gray-400 mt-1 font-medium">
-                  {item.salon}
-                </Text>
-              </View>
-
-              {/* BUTTON */}
-              <View
-                className={`w-10 h-10 rounded-full items-center justify-center ${
-                  item.active
-                    ? "bg-prborder-primary-pink"
-                    : "bg-transparent"
-                }`}
-              >
-                <ChevronRight
-                  size={22}
-                  color={item.active ? "#fff" : "#999"}
-                />
-              </View>
+              <Text className="ml-2 text-primary-pink text-base">{tab}</Text>
             </TouchableOpacity>
           ))}
         </View>
-      </ScrollView>
+      </View>
+
+      {/* Services */}
+      <FlatList
+        data={services}
+        keyExtractor={(item) => item.id}
+        renderItem={renderItem}
+        contentContainerStyle={{
+          paddingHorizontal: 16,
+          paddingBottom: 120,
+        }}
+        showsVerticalScrollIndicator={false}
+      />
+
+      {/* Bottom Bar */}
+      <View className="absolute bottom-20 left-0 right-0 bg-white px-5 py-4 flex-row items-center justify-between border-t border-gray-100">
+        <View>
+          <Text className="text-gray-400 text-xs">Total | Service</Text>
+
+          <View className="flex-row items-end">
+            <Text className="text-primary-pink text-2xl font-bold">
+              AED {total}
+            </Text>
+
+            <Text className="text-gray-400 text-xs ml-2 mb-1">
+              {totalServices}
+            </Text>
+          </View>
+        </View>
+
+        <TouchableOpacity
+          onPress={() => router.push("/screens/book-service")}
+          className="bg-secondary-purple px-10 py-4 rounded-full"
+        >
+          <Text className="text-white font-semibold">Book Now</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 }

@@ -154,16 +154,16 @@ export default function ChatScreen() {
       switch (item.type) {
         case "calendar":
           return (
-            <CalendarDays size={18} color="#000" strokeWidth={2} />
+            <CalendarDays size={18} color="#fff" strokeWidth={2} />
           );
 
         case "payment":
           return (
-            <DollarSign size={18} color="#000" strokeWidth={2} />
+            <DollarSign size={18} color="#fff" strokeWidth={2} />
           );
 
         case "offer":
-          return <Tag size={18} color="#000" strokeWidth={2} />;
+          return <Tag size={18} color="#fff" strokeWidth={2} />;
 
         default:
           return null;
@@ -172,7 +172,7 @@ export default function ChatScreen() {
 
     return (
       <TouchableOpacity className="flex-row py-4  border-b border-gray-100">
-        <View className="w-[52px] h-[52px] rounded-full bg-orange-300 items-center justify-center">
+        <View className="w-[52px] h-[52px] rounded-full bg-primary-pink items-center justify-center">
           {renderIcon()}
         </View>
 
@@ -192,7 +192,7 @@ export default function ChatScreen() {
           </Text>
 
           {item.unread && (
-            <View className="w-[7px] h-[7px] rounded-full bg-orange-500 mt-4" />
+            <View className="w-[7px] h-[7px] rounded-full bg-primary-pink mt-4" />
           )}
         </View>
       </TouchableOpacity>
