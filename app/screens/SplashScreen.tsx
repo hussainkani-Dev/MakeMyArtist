@@ -1,7 +1,7 @@
 import { View, Image, Dimensions } from "react-native";
 import { useEffect } from "react";
 import { useRouter } from "expo-router";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -9,18 +9,15 @@ import Animated, {
   withRepeat,
   Easing,
 } from "react-native-reanimated";
-
 import { LinearGradient } from "expo-linear-gradient";
 
 const { width } = Dimensions.get("window");
 
 export default function SplashScreen() {
   const router = useRouter();
-
   const translateX = useSharedValue(-width);
 
   useEffect(() => {
-    // Shine animation
     translateX.value = withRepeat(
       withTiming(width, {
         duration: 2000,
@@ -30,33 +27,40 @@ export default function SplashScreen() {
       false
     );
 
-    checkFirstLaunch();
+    checkApp();
   }, []);
 
-  // Check onboarding status
-  const checkFirstLaunch = async () => {
-  setTimeout(() => {
-    router.replace("/screens/Onboarding");
-  }, 3000);
-};
+  const checkApp = async () => {
+    const hasSeen = await AsyncStorage.getItem("hasSeenOnboarding");
+    const token = await AsyncStorage.getItem("accessToken");
 
-  const animatedStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateX: translateX.value }],
-    };
-  });
+    setTimeout(() => {
+      if (hasSeen !== "true") {
+        router.replace("/screens/Onboarding");
+        return;
+      }
+
+      if (token) {
+        router.replace("/(tabs)");
+      } else {
+        router.replace("/screens/login");
+      }
+    }, 3000);
+  };
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: translateX.value }],
+  }));
 
   return (
     <View className="flex-1 items-center justify-center bg-white">
       <View className="overflow-hidden">
-        {/* Logo */}
         <Image
           source={require("../../assets/images/Splash_Imgae_final.jpeg")}
           style={{ width: 220, height: 220 }}
           resizeMode="contain"
         />
 
-        {/* Shine Effect */}
         <Animated.View
           style={[
             {
@@ -71,11 +75,7 @@ export default function SplashScreen() {
           ]}
         >
           <LinearGradient
-            colors={[
-              "transparent",
-              "rgba(255,255,255,0.7)",
-              "transparent",
-            ]}
+            colors={["transparent", "rgba(255,255,255,0.7)", "transparent"]}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 1 }}
             style={{

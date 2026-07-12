@@ -1,3 +1,4 @@
+// app\_layout.tsx
 import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { Stack, usePathname } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -7,7 +8,7 @@ import "react-native-reanimated";
 import "react-native-gesture-handler";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
-
+import { AuthProvider } from "@/src/context/AuthContext";
 import "../global.css";
 
 import Loader from "../src/components/ui/Loader";
@@ -35,23 +36,23 @@ export default function RootLayout() {
   }, [pathname]);
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <ThemeProvider value={DefaultTheme}>
-        <BottomSheetModalProvider>
-          <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="screens/SplashScreen" />
-            <Stack.Screen name="screens/EmailVerification" />
-            <Stack.Screen name="screens/login" />
-            <Stack.Screen name="screens/SignUp" />
-            <Stack.Screen name="(tabs)" />
-            <Stack.Screen name="screens/locationSearchView" />
-          </Stack>
+     <GestureHandlerRootView style={{ flex: 1 }}>
+      <AuthProvider>
 
-          {loading && <Loader />}
+        <ThemeProvider value={DefaultTheme}>
+          <BottomSheetModalProvider>
 
-          <StatusBar style="auto" />
-        </BottomSheetModalProvider>
-      </ThemeProvider>
+            <Stack screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="screens/SplashScreen" />
+              <Stack.Screen name="screens/login" />
+              <Stack.Screen name="screens/SignUp" />
+              <Stack.Screen name="(tabs)" />
+            </Stack>
+
+          </BottomSheetModalProvider>
+        </ThemeProvider>
+
+      </AuthProvider>
     </GestureHandlerRootView>
   );
 }

@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { router } from "expo-router";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const { width, height } = Dimensions.get("screen");
 
 type Item = {
@@ -55,6 +55,11 @@ export default function Onboarding() {
     }
   };
 
+  const finishOnboarding = async () => {
+  await AsyncStorage.setItem("hasSeenOnboarding", "true");
+  router.replace("/screens/SignUp"); // or login/home
+};
+
   const renderItem = ({ item, index }: { item: Item; index: number }) => {
     const isLast = index === DATA.length - 1;
 
@@ -98,11 +103,14 @@ export default function Onboarding() {
                 </TouchableOpacity>
               ) : (
                 <>
-                  <TouchableOpacity className="bg-white py-4 rounded-full items-center mb-3">
-                    <Text className="text-black font-semibold">
-                      Join with Google
-                    </Text>
-                  </TouchableOpacity>
+                 <TouchableOpacity
+  className="bg-orange-pr py-4 rounded-full items-center"
+  onPress={finishOnboarding}
+>
+  <Text className="text-white font-semibold">
+    Join with Email
+  </Text>
+</TouchableOpacity>
 
                   <TouchableOpacity
                     className="bg-orange-pr py-4 rounded-full items-center"
@@ -119,12 +127,15 @@ export default function Onboarding() {
             {/* Sign in */}
             <Text className="text-center text-gray-300 mb-20 mt-4">
               Already have an account?{" "}
-              <Text
-                className="text-white font-semibold"
-                onPress={() => router.push("/screens/login")}
-              >
-                Sign in
-              </Text>
+             <Text
+  className="text-white font-semibold"
+  onPress={async () => {
+    await AsyncStorage.setItem("hasSeenOnboarding", "true");
+    router.replace("/screens/login");
+  }}
+>
+  Sign in
+</Text>
             </Text>
           </View>
         </ImageBackground>
